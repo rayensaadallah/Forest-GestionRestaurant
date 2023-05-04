@@ -8,4 +8,6 @@ export interface ReservationPlace {
   iduser: number;
   table: TableRestaurant;
   menu: Menu;
+
+  
 }

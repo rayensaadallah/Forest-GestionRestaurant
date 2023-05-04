@@ -12,17 +12,13 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { RestaurantComponent } from './Forest/restaurant/restaurant.component';
-import { AccesRestaurantComponent } from './Forest/acces-restaurant/acces-restaurant.component';
-import { OffreRestaurantComponent } from './Forest/offre-restaurant/offre-restaurant.component';
-import { MenuComponent } from './Forest/menu/menu.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-   
   ],
   imports: [
     BrowserAnimationsModule,

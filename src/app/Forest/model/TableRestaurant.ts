@@ -10,3 +10,4 @@ export interface TableRestaurant {
   resto: Restaurant;
   reservationPlaces: ReservationPlace[];
 }
+

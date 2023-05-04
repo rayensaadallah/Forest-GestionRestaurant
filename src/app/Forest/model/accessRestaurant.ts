@@ -2,6 +2,9 @@ import { OffreRestaurant } from './OffreRestaurant';
 
 export interface AccessRestaurant {
   id: number;
-  accessRestaurant: string;
+  dateStart: Date;
+  dateEnd: Date;
+  payment: Boolean;
+  User: number;
   offreRestaurant: OffreRestaurant;
 }
