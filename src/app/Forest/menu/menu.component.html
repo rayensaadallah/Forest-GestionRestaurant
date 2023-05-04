@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title">Menu</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="menu-name"><i class="fas fa-upload"></i> Menu Picture</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="menu-name" (change)="onFileSelected()">
+                            <label class="custom-file-label" for="menu-name">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 pr-1">
+                            <div class="form-group">
+                                <label>Name Menu</label>
+                                <input type="text" class="form-control" value="name  ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 pr-1">
+                            <div class="form-group">
+                                <label>Description Menu </label>
+                                <input type="text" class="form-control" placeholder="type">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 pr-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Date de Menu </label>
+                                <input type="time" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="update m-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Update Menu</button>
+                            <button type="submit" class="btn btn-success btn-round">Add Menu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card card-user">
+            <div class="image">
+                <img src="assets/img/damir-bosnjak.jpg" alt="...">
+            </div>
+            <div class="card-body">
+                <div class="author">
+                    <a href="#">
+                        <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+                        <h5 class="title">Menu Name</h5>
+                    </a>
+                    <p class="description">Description </p>
+                </div>
+                <p class="description text-center"> <br> date</p>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-round">Delete</button>
+                    <button type="submit" class="btn btn-success btn-round">Select</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
