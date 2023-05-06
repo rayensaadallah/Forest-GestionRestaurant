@@ -13,9 +13,10 @@ export const ROUTES: RouteInfo[] = [
     { path: '/Restaurant', title: 'Restaurant', icon: 'nc-diamond', class: '' },
     { path: '/OffreRestaurant', title: 'Offre Restaurant', icon: 'nc-pin-3', class: '' },
     { path: '/menu', title: 'Menus', icon: 'nc-bell-55', class: '' },
+    { path: '/TableRestaurant', title: 'Tables in Restaurant', icon: 'nc-bell-55', class: '' },
     { path: '/AccessRestaurant', title: 'Access Restaurant', icon: 'nc-bell-55', class: '' },
     { path: '/ReservationTable', title: 'Reservation Tables', icon: 'nc-bell-55', class: '' },
-    { path: '/TableRestaurant', title: 'Tables in Restaurant', icon: 'nc-bell-55', class: '' },
+    
 ];
 
 @Component({

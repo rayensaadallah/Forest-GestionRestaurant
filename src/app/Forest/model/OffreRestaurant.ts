@@ -1,7 +1,7 @@
 import { AccessRestaurant } from './accessRestaurant';
 import { Restaurant } from './Restaurant';
 
-export interface OffreRestaurant {
+export class OffreRestaurant {
   idOffreRestaurant: number;
   nameOffre: string;
   nbrDays: number;

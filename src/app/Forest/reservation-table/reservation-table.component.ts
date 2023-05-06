@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ReservationPlace } from '../model/ReservationPlace';
+import { ReservationService } from './reservation.service';
 
 @Component({
   selector: 'app-reservation-table',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationTableComponent implements OnInit {
 
-  constructor() { }
+  listreservation: any;
+  reservation!: ReservationPlace
+  constructor(private rs: ReservationService) { }
 
   ngOnInit(): void {
+    this.getAllProducts();;
+
+    this.reservation = {
+      dateEnd: null,
+      dateStart: null,
+      idReservationPlace: null,
+      iduser : null,
+      menu : null,
+      table :null
+    }
+  }
+  getAllProducts(){
+    this.rs.getAllProducts().subscribe(res => this.listreservation = res)
   }
 
 }

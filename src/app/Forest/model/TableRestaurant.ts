@@ -1,7 +1,7 @@
 import { ReservationPlace } from './ReservationPlace';
 import { Restaurant } from './Restaurant';
 
-export interface TableRestaurant {
+export class TableRestaurant {
   idTableRestaurant: number;
   number: number;
   block: string;

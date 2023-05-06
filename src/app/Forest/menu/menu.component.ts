@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuserviceService } from './menuservice.service';
+import { Menu } from '../model/Menu';
+import { NgClass } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-menu',
@@ -7,12 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
-
+  
+  constructor(private ms: MenuserviceService) { }
   ngOnInit(): void {
+   
   }
-  onFileSelected()
-  {
 
-  }
 }

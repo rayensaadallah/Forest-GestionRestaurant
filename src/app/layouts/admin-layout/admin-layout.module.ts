@@ -18,6 +18,7 @@ import { AccesRestaurantComponent } from 'app/Forest/acces-restaurant/acces-rest
 import { MenuComponent } from 'app/Forest/menu/menu.component';
 import { ReservationTableComponent } from 'app/Forest/reservation-table/reservation-table.component';
 import { TableRestaurantComponent } from 'app/Forest/table-restaurant/table-restaurant.component';
+import { RestaurantService } from 'app/Forest/restaurant/restaurant.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,9 @@ import { TableRestaurantComponent } from 'app/Forest/table-restaurant/table-rest
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     NgbModule
+  ],
+  providers:[
+    RestaurantService
   ],
   declarations: [
     TableRestaurantComponent,

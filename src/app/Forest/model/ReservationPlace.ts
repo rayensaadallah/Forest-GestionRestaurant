@@ -1,7 +1,7 @@
 import { TableRestaurant } from './TableRestaurant';
 import { Menu } from './Menu';
 
-export interface ReservationPlace {
+export class ReservationPlace {
   idReservationPlace: number;
   dateStart: Date;
   dateEnd: Date;

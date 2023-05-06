@@ -1,1 +1,117 @@
-<p>table-restaurant works!</p>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-round btn-sm btn-success" (click)="open(mymodal1)">Add new Product</button>
+            <br><br>
+            <ng-template #mymodal1 let-modal1>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Add new Product</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                        <span aria-hidden="true" (click)="cancel()">×</span>
+                    </button>
+
+                </div>
+                <div class="center">
+                    <form>
+                        <div class="row" class="col-md-6">
+                            <input type="text" placeholder="Product Name" [(ngModel)]="product.block"
+                                [ngModelOptions]="{standalone : true}">
+                        </div>
+                        <div class="row" class="col-md-6">
+                            <input type="number" placeholder="Price" [(ngModel)]="product.max"
+                                [ngModelOptions]="{standalone : true}">
+                        </div>
+                        <div class="row" class="col-md-6">
+                            <input type="number" placeholder="Quantity" [(ngModel)]="product.number"
+                                [ngModelOptions]="{standalone : true}">
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-success" (click)="addProduct(product)"
+                            (click)="modal1.close('Save click')">Add</button>
+                        <button type="button" class="btn btn-info" (click)="modal1.close('Save click')">Cancel</button>
+                    </form>
+                </div>
+            </ng-template>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> Table State : </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th>Block </th>
+                                    <th>Max </th>
+                                    <th>Right Now </th>
+                                    <th>Numbers of the place</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let p of listtable'>
+                                        <td>{{p.block}}</td>
+                                        <td>{{p.max}}</td>
+                                        <td>{{p.now}}</td>
+                                        <td>{{p.number}}</td>
+
+                                        <td><button type="button" class="btn btn-outline-primary"
+                                                (click)="open(mymodal)">edit</button>
+                                            <ng-template #mymodal let-modal>
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                                                    <button type="button" class="close" aria-label="Close"
+                                                        (click)="modal.dismiss('Cross click')">
+                                                        <span aria-hidden="true" (click)="cancel()">×</span>
+
+                                                    </button>
+
+                                                </div>
+                                                <div>
+                                                    <form>
+                                                        <div class="modal-body">
+
+                                                            <div class="row" class="col-md-5">
+                                                                <label>Block </label>
+                                                                <input type="text" [(ngModel)]="p.block"
+                                                                    [ngModelOptions]="{standalone : true}" />
+                                                            </div>
+                                                            <div class="row" class="col-md-5">
+                                                                <label>Max </label>
+                                                                <input type="number" [(ngModel)]="p.max"
+                                                                    [ngModelOptions]="{standalone : true}" />
+                                                            </div>
+                                                            <div class="row" class="col-md-5">
+                                                                <label>Now </label>
+                                                                <input type="number" [(ngModel)]="p.now"
+                                                                    [ngModelOptions]="{standalone : true}" />
+                                                            </div>
+                                                            <div class="row" class="col-md-5">
+                                                                <label>Number </label>
+                                                                <input type="number" [(ngModel)]="p.number"
+                                                                    [ngModelOptions]="{standalone : true}" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+
+                                                            <button type="button" class="btn btn-info"
+                                                                (click)="modal.close('Save click')"
+                                                                (click)="cancel()">Cancel</button>
+                                                            <button class="btn btn-success" (click)="editProduct(p)"
+                                                                (click)="modal.close('Save click')">Validate</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </ng-template>
+                                            <button type="button" class="btn btn-outline-danger"
+                                                (click)="deleteProduct(p.id_product)">delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
