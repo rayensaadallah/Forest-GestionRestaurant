@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title">Menu</h5>
+            </div>
+            <div class="card-body">
+                <form #orderForm="ngForm">
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Name Menu </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="text" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="selectedMenu.plateName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Description </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="text" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="selectedMenu.Description">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Time of meal </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="time" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="selectedMenu.timeMeal">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Type Food </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="text" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="selectedMenu.typeFood">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Image </label>
+                        </div>
+
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="file" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="selectedMenu.image">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Restaurantid </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="selectedMenu.Restaurantid">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="update m-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Update </button>
+                            <button type="submit" class="btn btn-success btn-round">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4" class="card card-user">
+        <div >
+            <tr *ngFor='let p of listmenu'>
+                <div class="image">
+                    <img src="assets\img\bg5.jpg" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="author">
+                        <a href="#">
+                            <h1>JCP</h1>
+                            <h5 class="title"> {{p.plateName}}</h5>
+                        </a>
+                        <p class="description">Description : {{p.Description}}</p>
+                    </div>
+                    <p class="description text-center">The Type Food <br>{{p.typeFood}}</p>
+                    
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary btn-round"
+                        (click)="deletemenu(p.idRestaurant)">delete</button>
+                        <button type="submit" class="btn btn-success btn-round">Select</button>
+                    </div>
+                </div>
+            </tr>
+        </div>
+    </div>
+</div>

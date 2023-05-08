@@ -19,16 +19,14 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllRestaurant();
-    const idRestaurant = this.route.snapshot.paramMap.get('idRestaurant');
-    if (idRestaurant) {
-      this.rs.getRestaurantDetails(idRestaurant).subscribe(
-        (idRestaurant) => {
-          this.selectedRestaurant = idRestaurant;
-        },
-        (error) => {
-          console.error('Failed to get order details', error);
-        }
-      );
+    
+    this.selectedRestaurant = {
+      addressRestaurant : null,
+      idRestaurant: null,
+      nameRestaurant: null,
+      nbrmaximal: null,
+      offreRestaurants: null,
+      tableRestaurants: null,
     }
     console.log(this.selectedRestaurant);
   }
@@ -54,15 +52,17 @@ export class RestaurantComponent implements OnInit {
       this.rs.addRestaurant(this.selectedRestaurant).subscribe(
         (product: Restaurant) => {
           console.log('restaurant added successfully', product);
+          this.getAllRestaurant();
         },
         (error) => {
           console.error('Failed to add restaurant', error);
         }
       );
     }
+
   }
 
-  deleterestaurant(id) {
+  deleterestaurant(id: any) {
     this.rs.deleteRestaurant(id).subscribe((response) => {
       this.getAllRestaurant();
     });

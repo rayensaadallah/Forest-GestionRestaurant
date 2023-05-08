@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Menu } from '../model/Menu';
 import { Observable } from 'rxjs';
 
@@ -7,29 +7,40 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MenuserviceService {
-  readonly API_URL = 'http://localhost:8089';
 
-  constructor(private httpClient: HttpClient) { }
+  readonly Restaurant_API_URL = 'http://localhost:8089/api/menu/add';
+  readonly GET_ALL_Restaurants_API_URL = 'http://localhost:8089/api/menu/all';
+  readonly DELETE_Restaurant_API_URL = 'http://localhost:8089/api/menu/delete/';
+  readonly UPDATE_Restaurant_API_URL='http://localhost:8089/api/menu/edit';
 
-  getAllMenus(): Observable<any> {
-    return this.httpClient.get(`${this.API_URL}/all-menu`);
+
+  readonly GET_Restaurant_DETAILS__API_URL = 'http://localhost:8089/api/menu/retriveRestaurant/';
+
+  private apiURL = 'http://localhost:8080/api/menu'; // Replace with your Spring Boot application URL
+
+  constructor(private httpClient: HttpClient) {}
+
+  
+  addMenu2(menu: FormData, restaurant_id: number): Observable<any> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+    
+    return this.httpClient.post(`${this.apiURL}/add/${restaurant_id}`, menu, { headers: headers });
   }
-
-  addMenu(menu: Menu, idrestaurant: number): Observable<any> {
-    const formData = new FormData();
-    formData.append('image', menu.image);
-    formData.append('description', menu.Description);
-    formData.append('plate_name', menu.plateName);
-    formData.append('time_meal', menu.timeMeal.toString());
-    formData.append('typeFood', menu.typeFood);
-    return this.httpClient.post(`${this.API_URL}/add-menu/${idrestaurant}`, formData);
+  addMenu(restaurant: Menu): Observable<any> {
+    return this.httpClient.post<Menu>(this.Restaurant_API_URL, restaurant);
   }
-
-  editMenu(menu: Menu): Observable<any> {
-    return this.httpClient.put(`${this.API_URL}/edit-menu`, menu);
+  getAllMenus(){
+    return this.httpClient.get<Menu[]>(this.GET_ALL_Restaurants_API_URL);
   }
-
-  deleteMenu(idMenu: number): Observable<any> {
-    return this.httpClient.delete(`${this.API_URL}/delete-menu/${idMenu}`);
+  deleteMenu(restaurantId: number){
+    return this.httpClient.delete(this.DELETE_Restaurant_API_URL + restaurantId);
+  }
+  getMenuDetails(restaurantId):Observable<any>{
+    return this.httpClient.get<any>(this.GET_Restaurant_DETAILS__API_URL + restaurantId);
+  }
+  updateMenu(restaurant:Menu):Observable<any>{
+    return this.httpClient.put<any> (this.UPDATE_Restaurant_API_URL , restaurant);
   }
 }

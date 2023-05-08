@@ -5,13 +5,13 @@
                 <h5 class="card-title">Restaurant</h5>
             </div>
             <div class="card-body">
-                <form #orderForm="ngForm" >
+                <form #orderForm="ngForm">
                     <div class="row">
                         <div class="col-xl-3 col-sm-4">
                             <label for="validationCustom012" class="mb-0">Name Restaurant </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
-                            <input class="form-control" type="number" id="validationCustom012" name="price" required=""
+                            <input class="form-control" type="text" id="validationCustom012" name="price" required=""
                                 [(ngModel)]="selectedRestaurant.nameRestaurant">
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                             <label for="validationCustom012" class="mb-0">Adress Restaurant </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
-                            <input class="form-control" type="number" id="validationCustom012" name="price" required=""
+                            <input class="form-control" type="text" id="validationCustom012" name="price" required=""
                                 [(ngModel)]="selectedRestaurant.addressRestaurant">
                         </div>
                     </div>
@@ -47,29 +47,8 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="card card-user">
-            <div class="image">
-                <img src="assets/img/damir-bosnjak.jpg" alt="...">
-            </div>
-            <div class="card-body">
-                <div class="author">
-                    <a href="#">
-                        <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
-                        <h5 class="title">Restaurant Name</h5>
-                    </a>
-                    <p class="description">adress Restaurant </p>
-                </div>
-                <p class="description text-center"> Nombre de place Disponible <br> nbr</p>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-round">Delete</button>
-                    <button type="submit" class="btn btn-success btn-round">Select</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="card card-user">
+    <div class="col-sm-4" class="card card-user">
+        <div >
             <tr *ngFor='let p of listrestaurant'>
                 <div class="image">
                     <img src="assets/img/damir-bosnjak.jpg" alt="...">
@@ -77,19 +56,21 @@
                 <div class="card-body">
                     <div class="author">
                         <a href="#">
-                            <h5 class="title">{{p.nameRestaurant}}</h5>
+                            <h1>JCP</h1>
+                            <h5 class="title">  {{p.nameRestaurant}}</h5>
                         </a>
-                        <p class="description">{{p.addressRestaurant}}</p>
+                        <p class="description">Adress Restaurant: {{p.addressRestaurant}}</p>
                     </div>
                     <p class="description text-center"> Nombre de place Disponible <br>{{p.nbrmaximal}}</p>
+                    
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-round">Delete</button>
+                        <button type="button" class="btn btn-primary btn-round"
+                        (click)="deleterestaurant(p.idRestaurant)">delete</button>
                         <button type="submit" class="btn btn-success btn-round">Select</button>
                     </div>
                 </div>
             </tr>
         </div>
     </div>
-
 
 </div>

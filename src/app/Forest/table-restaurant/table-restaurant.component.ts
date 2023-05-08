@@ -11,9 +11,8 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class TableRestaurantComponent implements OnInit {
 
   listtable : any; 
-  form : boolean = false;
   Table!: TableRestaurant;
-  closeResult! : string;
+  restaurantId: number;
 
   constructor(private ts : TableService,  private modalService: NgbModal) { }
 
@@ -32,42 +31,26 @@ export class TableRestaurantComponent implements OnInit {
   }
 
   getAllProducts(){
-    this.ts.getAllProducts().subscribe(res => this.listtable = res)
+    this.ts.getAllTableRestaurants().subscribe(res => this.listtable = res)
   }
 
-  addProduct(p: any){
-    this.ts.addProduct(p).subscribe(() => {
-      this.getAllProducts();
-      this.form = false;
-    });
+  addTableReservation() {
+    console.log('Restaurant ID:', this.restaurantId); // add this line
+    this.ts.addTableRestaurant(this.restaurantId, this.Table)
+      .subscribe(res => {
+        console.log(res); // log the response from the API
+        // reset the form and table reservation object
+        this.Table = new TableRestaurant();
+        this.restaurantId = null;
+      }, error => {
+        console.error(error); // log any errors
+      });
   }
-
+  
   editProduct(product : TableRestaurant){
-    this.ts.editProduct(product).subscribe();
+    this.ts.updateTableRestaurant(product).subscribe();
   }
   deleteProduct(idProduct : any){
-    this.ts.deleteProduct(idProduct).subscribe(() => this.getAllProducts())
-  }
-  open(content: any) {
-  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    this.closeResult = `Closed with: ${result}`;
-  }, (reason) => {
-    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  });
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-  closeForm(){
-
-  }
-  cancel(){
-    this.form = false;
+    this.ts.deleteTableRestaurant(idProduct).subscribe(() => this.getAllProducts())
   }
 }

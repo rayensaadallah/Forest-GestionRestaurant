@@ -19,13 +19,15 @@ import { MenuComponent } from 'app/Forest/menu/menu.component';
 import { ReservationTableComponent } from 'app/Forest/reservation-table/reservation-table.component';
 import { TableRestaurantComponent } from 'app/Forest/table-restaurant/table-restaurant.component';
 import { RestaurantService } from 'app/Forest/restaurant/restaurant.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
   ],
   providers:[
     RestaurantService

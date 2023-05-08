@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FoRest:war">
+    <output-path>$PROJECT_DIR$/FoRest - Backend/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>FoRest</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="FoRest-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="FoRest:war exploded" />
+    </root>
+  </artifact>
+</component>

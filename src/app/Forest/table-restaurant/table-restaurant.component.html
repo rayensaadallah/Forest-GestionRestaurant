@@ -1,37 +1,63 @@
 <div class="col-md-12">
+
+    <div class="col-md-12">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title">Table Restaurant</h5>
+            </div>
+            <div class="card-body">
+                <form #orderForm="ngForm">
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Block</label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="text" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="Table.block">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Max </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="Table.max">
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">now</label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="Table.now">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Restaurant ID  </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="Table.resto">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="update m-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Update </button>
+                            <button type="submit" class="btn btn-success btn-round"
+                                (click)="addTableReservation()">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-round btn-sm btn-success" (click)="open(mymodal1)">Add new Product</button>
-            <br><br>
-            <ng-template #mymodal1 let-modal1>
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title">Add new Product</h4>
-                    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
-                        <span aria-hidden="true" (click)="cancel()">×</span>
-                    </button>
-
-                </div>
-                <div class="center">
-                    <form>
-                        <div class="row" class="col-md-6">
-                            <input type="text" placeholder="Product Name" [(ngModel)]="product.block"
-                                [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="row" class="col-md-6">
-                            <input type="number" placeholder="Price" [(ngModel)]="product.max"
-                                [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="row" class="col-md-6">
-                            <input type="number" placeholder="Quantity" [(ngModel)]="product.number"
-                                [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <br>
-                        <button type="button" class="btn btn-success" (click)="addProduct(product)"
-                            (click)="modal1.close('Save click')">Add</button>
-                        <button type="button" class="btn btn-info" (click)="modal1.close('Save click')">Cancel</button>
-                    </form>
-                </div>
-            </ng-template>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
