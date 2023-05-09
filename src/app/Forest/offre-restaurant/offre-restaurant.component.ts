@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { OffreRestaurant } from '../model/OffreRestaurant';
 import { OffreRestaurantService } from './offre-restaurant.service';
+import { Restaurant } from '../model/Restaurant';
 
 @Component({
   selector: 'app-offre-restaurant',
@@ -10,68 +11,52 @@ import { OffreRestaurantService } from './offre-restaurant.service';
 })
 export class OffreRestaurantComponent implements OnInit {
 
+  listoffers: any;
+  offreRestaurant!: OffreRestaurant;
+  res!: Restaurant;
+  form: boolean = false;
+  closeResult!: string;
 
-  listoffers : any; 
-  form : boolean = false;
-   offreRestaurant!: OffreRestaurant;
-   closeResult! : string;
-
-  constructor(private offreservice : OffreRestaurantService, private modalService: NgbModal) { }
+  constructor(private offreservice: OffreRestaurantService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    //this.getAllProducts();;
+    this.getAllProducts();
 
     this.offreRestaurant = {
       idOffreRestaurant: null,
-      nameOffre: null,
-      nbrDays: null,
-      BREAKFAST: null,
-      LUNCH: null,
-      DINNER: null,
+      nameOffre: "",
+      nbrDays: 0,
+      breakfast: false,
+      lunch: false,
+      dinner: false,
       price: null,
-      restaurant : null,
-      accessRestaurants : null
+      restaurant: null,
+      accessRestaurants: null
     }
   }
 
-  getAllProducts(){
-    this.offreservice.getAllProducts().subscribe(res => this.listoffers = res)
-  }
-
-  addProduct(p: any){
-    this.offreservice.addProduct(p).subscribe(() => {
+  deleteoffre(id: any) {
+    this.offreservice.delete(id).subscribe((response) => {
       this.getAllProducts();
-      this.form = false;
     });
   }
 
-  editProduct(product : OffreRestaurant){
+  getAllProducts() {
+    this.offreservice.getAllProducts().subscribe(res => this.listoffers = res)
+  }
+
+  onSubmit(): void {
+    const idrestaurant = 1; // replace with actual restaurant ID
+    this.offreservice.addOffreRestaurant(idrestaurant, this.offreRestaurant)
+      .subscribe(response => {
+        console.log(response);
+      });
+    this.getAllProducts();
+  }
+
+  editProduct(product: OffreRestaurant) {
     this.offreservice.editProduct(product).subscribe();
   }
-  deleteProduct(idProduct : any){
-    this.offreservice.deleteProduct(idProduct).subscribe(() => this.getAllProducts())
-  }
-  open(content: any) {
-  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    this.closeResult = `Closed with: ${result}`;
-  }, (reason) => {
-    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  });
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-  closeForm(){
 
-  }
-  cancel(){
-    this.form = false;
-  }
 }
 

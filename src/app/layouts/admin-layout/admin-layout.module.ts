@@ -20,6 +20,7 @@ import { ReservationTableComponent } from 'app/Forest/reservation-table/reservat
 import { TableRestaurantComponent } from 'app/Forest/table-restaurant/table-restaurant.component';
 import { RestaurantService } from 'app/Forest/restaurant/restaurant.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ClientComponent } from 'app/Forest/client/client.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     RestaurantService
   ],
   declarations: [
+    ClientComponent,
     TableRestaurantComponent,
     ReservationTableComponent,
     MenuComponent,

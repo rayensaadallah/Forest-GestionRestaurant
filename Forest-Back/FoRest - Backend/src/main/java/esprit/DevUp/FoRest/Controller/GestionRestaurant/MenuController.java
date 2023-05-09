@@ -2,6 +2,7 @@ package esprit.DevUp.FoRest.Controller.GestionRestaurant;
 
 import com.google.zxing.WriterException;
 import esprit.DevUp.FoRest.Entity.Menu;
+import esprit.DevUp.FoRest.Entity.Restaurant;
 import esprit.DevUp.FoRest.Entity.typeFood;
 import esprit.DevUp.FoRest.Service.GestionRestaurant.IServiceMenu;
 import esprit.DevUp.FoRest.Utils.CodeQR;
@@ -35,7 +36,7 @@ public class MenuController {
     public Menu OneMenu(@PathVariable("idmenu") Integer m) {
         return  iserviceMenu.retrieveMenu(m);
     }
-    @GetMapping("/retrieveAllMenu/{Restaurant_id}")
+    @GetMapping("/all/{Restaurant_id}")
     public List<Menu> retrieveAllMenuByRestaurant(@PathVariable("Restaurant_id") Integer Restaurant_id) {
         List<Menu> list = iserviceMenu.retrieveAllMenuByRestaurant(Restaurant_id);
         return list;
@@ -56,9 +57,14 @@ public class MenuController {
         CodeQR.generateQRCodeMenu(menu);
         return r;
     }
+    
+  @PostMapping("/add")
+  public Menu addRestaurant(@RequestBody Menu restaurant) throws IOException {
+    Menu r = iserviceMenu.addMenu2(restaurant);
+    return r;
+  }
 
-
-    @DeleteMapping("/delete/{idMenu}")
+  @DeleteMapping("/delete/{idMenu}")
     public void removeMenu(@PathVariable("idMenu") Integer idmenu) {
         iserviceMenu.removeMenu(idmenu);
     }

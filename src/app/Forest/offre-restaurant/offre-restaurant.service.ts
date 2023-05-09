@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { OffreRestaurant } from '../model/OffreRestaurant';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OffreRestaurantService {
-
-  readonly API_URL = 'http://localhost:8089/api/offre-restaurant';
-  
+  readonly DELETE_Restaurant_API_URL = 'http://localhost:8089/api/offrerestaurant/delete/';
+  readonly API_URL = 'http://localhost:8089/api/offrerestaurant';
   constructor(private httpClient: HttpClient) { }
 
   getAllProducts() {
@@ -19,7 +20,11 @@ export class OffreRestaurantService {
   editProduct(product : any){
     return this.httpClient.put(`${this.API_URL}/edit`, product)
   }
-  deleteProduct(idProduct : any){
-    return  this.httpClient.delete(`${this.API_URL}/delete/${idProduct}`)
+  addOffreRestaurant(idrestaurant: number, offreRestaurant: OffreRestaurant): Observable<OffreRestaurant> {
+    const url = `${this.API_URL}/${idrestaurant}/add`;
+    return this.httpClient.post<OffreRestaurant>(url, offreRestaurant);
+  }
+  delete(Idoffre: number){
+    return this.httpClient.delete(this.DELETE_Restaurant_API_URL + Idoffre);
   }
 }

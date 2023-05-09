@@ -23,7 +23,7 @@ public class ReservationPlaceController {
         return list;
     }
 
-    @GetMapping("/add/{table}")
+    @GetMapping("/all/{table}")
     public List<ReservationPlace> getReservationPlacebyresto(@PathVariable("table") Integer idresto) {
         List<ReservationPlace> list = iServiceReservationPlace.showbytable(idresto);
         return list;

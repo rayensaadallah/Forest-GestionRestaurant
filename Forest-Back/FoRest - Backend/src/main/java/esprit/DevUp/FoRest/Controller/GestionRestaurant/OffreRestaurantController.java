@@ -15,13 +15,12 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
-@RequestMapping("/offreRestaurant")
+@RequestMapping("/offrerestaurant")
 @CrossOrigin(origins = "http://localhost:4200")
 public class OffreRestaurantController {
 
     @Autowired
     IServiceOffreRestaurant iServiceOffreRestaurant;
-
         @GetMapping("/offre/{idoffre}")
     public OffreRestaurant getoffredetails(@PathVariable("idoffre") Integer id) {
         return iServiceOffreRestaurant.retrieveOneOffre(id);
@@ -31,24 +30,24 @@ public class OffreRestaurantController {
         List<OffreRestaurant> list = iServiceOffreRestaurant.retrieveAllOffreByRestaurant(idrestaurant);
         return list;
     }
-    @GetMapping("/Alloffers")
+    @GetMapping("/all")
     public List<OffreRestaurant> getoffreRestaurant() {
         List<OffreRestaurant> list = iServiceOffreRestaurant.retrieveAllOffer();
         return list;
     }
 
-    @PostMapping("/{idrestaurant}/addOffreRestaurant")
+    @PostMapping("/{idrestaurant}/add")
     public OffreRestaurant addOffreRestaurant(@PathVariable("idrestaurant") Integer idrestaurant,@RequestBody OffreRestaurant offreRestaurant) throws IOException, WriterException {
         CodeQR.generateQRCodeOffre(offreRestaurant);
         OffreRestaurant r = iServiceOffreRestaurant.addOffreRestaurant(offreRestaurant,idrestaurant);
         return r;
     }
-    @DeleteMapping("/removeOffreRestaurant/{idOffreRestaurant}")
+    @DeleteMapping("/delete/{idOffreRestaurant}")
     public void removeOffreRestaurant(@PathVariable("idOffreRestaurant") Integer idOffreRestaurant) {
         iServiceOffreRestaurant.removeOffreRestaurant(idOffreRestaurant);
     }
 
-    @PutMapping("/updateOffreRestaurant/{idOffreRestaurant}")
+    @PutMapping("/update/{idOffreRestaurant}")
     public OffreRestaurant updateOffreRestaurant(@RequestBody OffreRestaurant offre) {
         OffreRestaurant offreRestaurant= iServiceOffreRestaurant.updateOffreRestaurant(offre);
         return offreRestaurant;

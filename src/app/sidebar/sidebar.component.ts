@@ -16,6 +16,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/TableRestaurant', title: 'Tables in Restaurant', icon: 'nc-bell-55', class: '' },
     { path: '/AccessRestaurant', title: 'Access Restaurant', icon: 'nc-bell-55', class: '' },
     { path: '/ReservationTable', title: 'Reservation Tables', icon: 'nc-bell-55', class: '' },
+    { path: '/Client', title: 'Client Can Do ', icon: 'nc-bell-55', class: '' },
     
 ];
 

@@ -15,7 +15,9 @@ public interface IServiceMenu {
 
     Menu updateMenu (Menu u);
 
-    Menu retrieveMenu(Integer idmenu);
+  Menu addMenu2 (Menu u) throws IOException;
+
+  Menu retrieveMenu(Integer idmenu);
 
     void removeMenu(Integer idmenu);
 

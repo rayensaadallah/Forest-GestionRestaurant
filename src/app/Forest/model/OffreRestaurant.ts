@@ -5,9 +5,9 @@ export class OffreRestaurant {
   idOffreRestaurant: number;
   nameOffre: string;
   nbrDays: number;
-  BREAKFAST: boolean;
-  LUNCH: boolean;
-  DINNER: boolean;
+  breakfast: boolean;
+  lunch: boolean;
+  dinner: boolean;
   price: number;
   accessRestaurants: AccessRestaurant[];
   restaurant: Restaurant;

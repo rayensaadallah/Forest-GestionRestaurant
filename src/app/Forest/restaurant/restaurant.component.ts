@@ -14,9 +14,6 @@ export class RestaurantComponent implements OnInit {
   selectedRestaurant: Restaurant;
 
   constructor(private rs: RestaurantService,private route: ActivatedRoute) { }
-
-
-
   ngOnInit(): void {
     this.getAllRestaurant();
     

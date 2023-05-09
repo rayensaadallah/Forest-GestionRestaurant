@@ -28,7 +28,7 @@ public class AccessRestaurantController {
         return serviceAccessRestaurant.OneAccessRestaurant(idoffre);
     }
 
-    @GetMapping("{idrestaurant}/add")
+    @GetMapping("{idrestaurant}/all")
     public List<accessRestaurant> getaccessRestaurantbyrestaurant(@PathVariable("idrestaurant") Integer idRestaurant) {
         List<accessRestaurant> list = serviceAccessRestaurant.retrieveAllAccessbyRestaurant(idRestaurant);
         return list;

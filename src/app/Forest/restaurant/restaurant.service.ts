@@ -7,33 +7,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RestaurantService {
-/*
-  readonly API_URL = 'http://localhost:8089/api/Restaurant';
-
-  constructor(private httpClient: HttpClient) { }
-
-  getAllProducts() {
-    return this.httpClient.get(`${this.API_URL}/all`)
-  }
-  addProduct(product : any) {
-    return this.httpClient.post(`${this.API_URL}/add`, product)
-  }
-  editProduct(product : any){
-    return this.httpClient.put(`${this.API_URL}/edit`, product)
-  }
-  deleteProduct(idProduct : any){
-    return  this.httpClient.delete(`${this.API_URL}/delete/${idProduct}`)
-  }*/
 
   readonly Restaurant_API_URL = 'http://localhost:8089/api/Restaurant/add';
   readonly GET_ALL_Restaurants_API_URL = 'http://localhost:8089/api/Restaurant/all';
   readonly DELETE_Restaurant_API_URL = 'http://localhost:8089/api/Restaurant/delete/';
   readonly UPDATE_Restaurant_API_URL='http://localhost:8089/api/Restaurant/edit';
 
-
   readonly GET_Restaurant_DETAILS__API_URL = 'http://localhost:8089/api/Restaurant/retriveRestaurant/';
 
-  
   constructor(private httpClient: HttpClient) {
 
   }

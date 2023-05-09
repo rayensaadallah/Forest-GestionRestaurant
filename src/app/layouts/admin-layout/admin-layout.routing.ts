@@ -8,6 +8,7 @@ import { AccesRestaurantComponent } from 'app/Forest/acces-restaurant/acces-rest
 import { MenuComponent } from 'app/Forest/menu/menu.component';
 import { ReservationTableComponent } from 'app/Forest/reservation-table/reservation-table.component';
 import { TableRestaurantComponent } from 'app/Forest/table-restaurant/table-restaurant.component';
+import { ClientComponent } from 'app/Forest/client/client.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -18,6 +19,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'AccessRestaurant', component: AccesRestaurantComponent },
     { path: 'menu', component: MenuComponent },
     { path: 'ReservationTable', component: ReservationTableComponent },
-    { path: 'TableRestaurant', component: TableRestaurantComponent }
-
+    { path: 'TableRestaurant', component: TableRestaurantComponent },
+    { path: 'Client', component: ClientComponent }
 ];

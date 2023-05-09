@@ -15,7 +15,7 @@ import java.nio.file.Path;
 
 public class CodeQR {
     public static void generateQRCodeMenu(Menu menu) throws WriterException, IOException {
-        String qrCodePath = "C:\\Users\\Rayen\\Desktop\\4sae2-devup-dev-up\\image\\QRcodeMenu\\";
+        String qrCodePath = "C:\\Users\\Rayen\\Desktop\\Learn Angular\\Forest-Administration\\Forest-Back\\image\\QRcodeMenu\\";
         String qrCodeName = qrCodePath+menu.getIdMenu()+"-QRCODE.png";
         var qrCodeWriter = new QRCodeWriter();
         String show = "Menu :"+menu.getPlateName()+menu.getDescription()+menu.getImage();
@@ -24,7 +24,7 @@ public class CodeQR {
         MatrixToImageWriter.writeToPath(bitMatrix,"PNG",path);
     }
     public static void generateQRCodeOffre(OffreRestaurant offre) throws WriterException, IOException {
-        String qrCodePath = "C:\\Users\\Rayen\\Desktop\\4sae2-devup-dev-up\\image\\QRcodeOffreRestaurant\\";
+        String qrCodePath = "C:\\Users\\Rayen\\Desktop\\Learn Angular\\Forest-Administration\\Forest-Back\\image\\QRcodeOffreRestaurant\\";
         String qrCodeName = qrCodePath+offre.getNameOffre()+".png";
         var qrCodeWriter = new QRCodeWriter();
         String show =" --Offre Name :"+ offre.getNameOffre()+" -Price :"+offre.getPrice()+" -Numbre of days  :"+offre.getNbrDays()+" -Dinner :"+offre.getDINNER()+" -Lunch :"+offre.getLUNCH()+" -BREAFAST :"+offre.getBREAKFAST();

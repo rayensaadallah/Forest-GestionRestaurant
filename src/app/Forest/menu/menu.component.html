@@ -88,11 +88,24 @@
                         <p class="description">Description : {{p.Description}}</p>
                     </div>
                     <p class="description text-center">The Type Food <br>{{p.typeFood}}</p>
-                    
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-round"
                         (click)="deletemenu(p.idRestaurant)">delete</button>
                         <button type="submit" class="btn btn-success btn-round">Select</button>
+                        <button type="button" class="btn btn-info" (click)="open(myqrmodal)"> QR Code </button>
+                        <ng-template #myqrmodal let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title">QR Code for Product {{p.nameoffre}}</h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('cancel')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img [src]="'C:\Users\Rayen\Desktop\Learn Angular\Forest-Administration\Forest-Back\image\QRcodeMenu' + p.nameoffre+ '.png'"
+                                    alt="">
+                            </div>
+                        </ng-template>
                     </div>
                 </div>
             </tr>

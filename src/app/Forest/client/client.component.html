@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> offers State : </h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <th>ID </th>
+                                <th>Name </th>
+                                <th>Nombre of Days available </th>
+                                <th>Is lunch in </th>
+                                <th>Is Dinner in </th>
+                                <th>Is BreackFast in </th>
+                                <th>Price </th>
+                                <th>of this Restaurant </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor='let p of listoffers'>
+                                    <td>{{p.idOffreRestaurant}}</td>
+                                    <td>{{p.nameOffre}}</td>
+                                    <td>{{p.nbrDays}}</td>
+                                    <td>{{p.lunch}}</td>
+                                    <td>{{p.dinner}}</td>
+                                    <td>{{p.breckfast}}</td>
+                                    <td>{{p.price}}</td>
+                                    <td>{{p.restaurant}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-round"  (click)="add(p.idOffreRestaurant)">buy</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,126 +1,258 @@
-<div class="row">
+<div class="col-md-12">
+
+    <div class="col-md-12">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title">Offre For Each Restaurant</h5>
+            </div>
+            <div class="card-body">
+                <form #orderForm="ngForm">
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">idOffreRestaurant</label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="text" id="validationCustom012" name="idOffreRestaurant"
+                                required="" [(ngModel)]="offreRestaurant.idOffreRestaurant">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">nameOffre </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="text" id="validationCustom012" name="nameOffre"
+                                required="" [(ngModel)]="offreRestaurant.nameOffre">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">nbrDays</label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="nbrDays"
+                                required="" [(ngModel)]="offreRestaurant.nbrDays">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Restaurant ID </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="restaurant"
+                                required="" [(ngModel)]="offreRestaurant.restaurant">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">price</label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="offreRestaurant.price">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">BREAKFAST</label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="checkbox" id="validationCustom012" name="BREAKFAST"
+                                required="" [(ngModel)]="offreRestaurant.breakfast">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">LUNCH</label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="checkbox" id="validationCustom012" name="LUNCH"
+                                required="" [(ngModel)]="offreRestaurant.lunch">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">DINNER</label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="checkbox" id="validationCustom012" name="DINNER"
+                                required="" [(ngModel)]="offreRestaurant.dinner">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="update m-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Update </button>
+                            <button type="submit" class="btn btn-success btn-round" (click)="onSubmit()">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-round btn-sm btn-success" (click)="open(mymodal1)">Add new Offre </button>
-            <br><br>
-            <ng-template #mymodal1 let-modal1>
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title">Add new Offre</h4>
-                    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
-                        <span aria-hidden="true" (click)="cancel()">×</span>
-                    </button>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> offers State : </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th>ID </th>
+                                    <th>Name </th>
+                                    <th>Nombre of Days available </th>
+                                    <th>Is lunch in </th>
+                                    <th>Is Dinner in </th>
+                                    <th>Is BreackFast in </th>
+                                    <th>Price </th>
+                                    <th>of this Restaurant </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let p of listoffers'>
+                                        <td>{{p.idOffreRestaurant}}</td>
+                                        <td>{{p.nameOffre}}</td>
+                                        <td>{{p.nbrDays}}</td>
+                                        <td>{{p.lunch}}</td>
+                                        <td>{{p.dinner}}</td>
+                                        <td>{{p.breckfast}}</td>
+                                        <td>{{p.price}}</td>
+                                        <td>{{p.restaurant}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-primary"
+                                                (click)="open(mymodal)">edit</button>
 
-                </div>
-                <div class="center">
-                    <form>
-                        <div class="row" class="col-md-6">
-                            <input type="text" placeholder="Product Name" [(ngModel)]="product.nameOffre"
-                                [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="row" class="col-md-6">
-                            <input type="number" placeholder="Price" [(ngModel)]="product.nbrDays"
-                                [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <div class="row" class="col-md-6">
-                            <input type="number" placeholder="Quantity" [(ngModel)]="product.price"
-                                [ngModelOptions]="{standalone : true}">
-                        </div>
-                        <br>
-                        <button type="button" class="btn btn-success" (click)="addProduct(product)"
-                            (click)="modal1.close('Save click')">Add</button>
-                        <button type="button" class="btn btn-info" (click)="modal1.close('Save click')">Cancel</button>
-                    </form>
-                </div>
-            </ng-template>
-            <div class="row">
-                <div class="card" class="text-center">
-                    <table class="table">
-                        <thead style="background-color: rgb(192, 183, 183);">
-                            <th>nameOffre</th>
-                            <th>nbrDays</th>
-                            <th>BREAKFAST</th>
-                            <th>LUNCH</th>
-                            <th>DINNER</th>
-                            <th>price</th>
-                            <th>restaurant</th>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor='let p of listoffers'>
-                                <td>{{p.nameOffre}}</td>
-                                <td>{{p.nbrDays}}</td>
-                                <td>{{p.BREAKFAST}}</td>
-                                <td>{{p.LUNCH}}</td>
-                                <td>{{p.DINNER}}</td>
-                                <td>{{p.price}}</td>
-                                <td>{{p.restaurant}}</td>
-                                <td><button type="button" class="btn btn-outline-primary"
-                                        (click)="open(mymodal)">edit</button>
-                                    <ng-template #mymodal let-modal>
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="modal-basic-title">Edit</h4>
-                                            <button type="button" class="close" aria-label="Close"
-                                                (click)="modal.dismiss('Cross click')">
-                                                <span aria-hidden="true" (click)="cancel()">×</span>
-                                            </button>
-
-                                        </div>
-                                        <div>
-                                            <form>
-                                                <div class="modal-body">
-                                                    <div class="row" class="col-md-5">
-                                                        <label>Title</label>
-                                                        <input type="text" [(ngModel)]="p.nameOffre"
-                                                            [ngModelOptions]="{standalone : true}" />
-                                                    </div>
-                                                    <div class="row" class="col-md-5">
-                                                        <label>nombre of days</label>
-                                                        <input type="number" [(ngModel)]="p.nbrDays"
-                                                            [ngModelOptions]="{standalone : true}" />
-                                                    </div>
-                                                    <div class="row" class="col-md-5">
-                                                        <label>BREAKFAST</label>
-                                                        <input type="number" [(ngModel)]="p.BREAKFAST"
-                                                            [ngModelOptions]="{standalone : true}" />
-                                                    </div>
-                                                    <div class="row" class="col-md-5">
-                                                        <label>LUNCH</label>
-                                                        <input type="text" [(ngModel)]="p.LUNCH"
-                                                            [ngModelOptions]="{standalone : true}" />
-                                                    </div>
-                                                    <div class="row" class="col-md-5">
-                                                        <label>DINNER</label>
-                                                        <input type="text" [(ngModel)]="p.DINNER"
-                                                            [ngModelOptions]="{standalone : true}" />
-                                                    </div>
-                                                    <div class="row" class="col-md-5">
-                                                        <label>price</label>
-                                                        <input type="text" [(ngModel)]="p.Price"
-                                                            [ngModelOptions]="{standalone : true}" />
-                                                    </div>
-                                                    <div class="row" class="col-md-5">
-                                                        <label>restaurant</label>
-                                                        <input type="text" [(ngModel)]="p.Restaurant"
-                                                            [ngModelOptions]="{standalone : true}" />
-                                                    </div>
+                                            <ng-template #mymodal let-modal>
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                                                    <button type="button" class="close" aria-label="Close"
+                                                        (click)="modal.dismiss('Cross click')">
+                                                        <span aria-hidden="true" (click)="cancel()">×</span>
+                                                    </button>
                                                 </div>
+                                                <div>
+                                                    <form #orderForm="ngForm">
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-xl-3 col-sm-4">
+                                                                    <label for="validationCustom012"
+                                                                        class="mb-0">idOffreRestaurant</label>
+                                                                </div>
+                                                                <div class="col-xl-8 col-sm-7">
+                                                                    <input class="form-control" type="text"
+                                                                        id="validationCustom012"
+                                                                        name="idOffreRestaurant" required=""
+                                                                        [(ngModel)]="listoffers.idOffreRestaurant">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-3 col-sm-4">
+                                                                    <label for="validationCustom012"
+                                                                        class="mb-0">nameOffre </label>
+                                                                </div>
+                                                                <div class="col-xl-8 col-sm-7">
+                                                                    <input class="form-control" type="text"
+                                                                        id="validationCustom012" name="nameOffre"
+                                                                        required="" [(ngModel)]="listoffers.nameOffre">
+                                                                </div>
+                                                            </div>
 
-                                                <div class="modal-footer">
-
-                                                    <button type="button" class="btn btn-info"
-                                                        (click)="modal.close('Save click')"
-                                                        (click)="cancel()">Cancel</button>
-                                                    <button class="btn btn-success" (click)="editProduct(p)"
-                                                        (click)="modal.close('Save click')">Validate</button>
+                                                            <div class="row">
+                                                                <div class="col-xl-3 col-sm-4">
+                                                                    <label for="validationCustom012"
+                                                                        class="mb-0">nbrDays</label>
+                                                                </div>
+                                                                <div class="col-xl-8 col-sm-7">
+                                                                    <input class="form-control" type="number"
+                                                                        id="validationCustom012" name="nbrDays"
+                                                                        required="" [(ngModel)]="listoffers.nbrDays">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-3 col-sm-4">
+                                                                    <label for="validationCustom012"
+                                                                        class="mb-0">Restaurant ID </label>
+                                                                </div>
+                                                                <div class="col-xl-8 col-sm-7">
+                                                                    <input class="form-control" type="number"
+                                                                        id="validationCustom012" name="restaurant"
+                                                                        required="" [(ngModel)]="listoffers.restaurant">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-3 col-sm-4">
+                                                                    <label for="validationCustom012"
+                                                                        class="mb-0">price</label>
+                                                                </div>
+                                                                <div class="col-xl-8 col-sm-7">
+                                                                    <input class="form-control" type="number"
+                                                                        id="validationCustom012" name="price"
+                                                                        required="" [(ngModel)]="listoffers.price">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-3 col-sm-4">
+                                                                    <label for="validationCustom012"
+                                                                        class="mb-0">BREAKFAST</label>
+                                                                </div>
+                                                                <div class="col-xl-8 col-sm-7">
+                                                                    <input class="form-control" type="checkbox"
+                                                                        id="validationCustom012" name="BREAKFAST"
+                                                                        required="" [(ngModel)]="listoffers.breakfast">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-3 col-sm-4">
+                                                                    <label for="validationCustom012"
+                                                                        class="mb-0">LUNCH</label>
+                                                                </div>
+                                                                <div class="col-xl-8 col-sm-7">
+                                                                    <input class="form-control" type="checkbox"
+                                                                        id="validationCustom012" name="LUNCH"
+                                                                        required="" [(ngModel)]="listoffers.lunch">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-3 col-sm-4">
+                                                                    <label for="validationCustom012"
+                                                                        class="mb-0">DINNER</label>
+                                                                </div>
+                                                                <div class="col-xl-8 col-sm-7">
+                                                                    <input class="form-control" type="checkbox"
+                                                                        id="validationCustom012" name="DINNER"
+                                                                        required="" [(ngModel)]="listoffers.dinner">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="update m-auto mr-auto">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary btn-round">Update
+                                                                    </button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-success btn-round"
+                                                                        (click)="addProduct(offreRestaurant)">Add</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-info"
+                                                                (click)="modal.close('Save click')"
+                                                                (click)="cancel()">Cancel</button>
+                                                            <button class="btn btn-success" (click)="editProduct(p)"
+                                                                (click)="modal.close('Save click')">Validate</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </form>
-                                        </div>
-                                    </ng-template>
-                                    <button type="button" class="btn btn-outline-danger"
-                                        (click)="deleteProduct(p.id_product)">delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                            </ng-template>
+                                            <button type="button" class="btn btn-outline-danger" (click)="deleteoffre(p.idOffreRestaurant)" >delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
