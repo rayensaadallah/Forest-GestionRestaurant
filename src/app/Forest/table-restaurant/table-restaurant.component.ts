@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TableRestaurant } from '../model/TableRestaurant';
 import { TableService } from './table.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Restaurant } from '../model/Restaurant';
+import { RestaurantService } from '../restaurant/restaurant.service';
 
 @Component({
   selector: 'app-table-restaurant',
@@ -10,27 +12,34 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TableRestaurantComponent implements OnInit {
 
-  listtable : any; 
+  listtable: any;
   Table!: TableRestaurant;
   restaurantId: number;
-
-  constructor(private ts : TableService,  private modalService: NgbModal) { }
+  http: any;
+  listrestaurant: Restaurant[] = [];
+  constructor(private ts: TableService, private rs: RestaurantService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getAllProducts();;
 
+    this.getAllProducts();;
+    this.getAllRestaurant();
     this.Table = {
-  block:  null,
-  idTableRestaurant : null,
-  max: null,
-  now: null,
-  number: null,
-  reservationPlaces : null,
-  resto: null
+      block: null,
+      idTableRestaurant: null,
+      max: null,
+      now: null,
+      number: null,
+      reservationPlaces: null,
+      resto: null
     }
   }
 
-  getAllProducts(){
+  getAllRestaurant() {
+    this.rs.getAllRestaurants().subscribe((response) => {
+      this.listrestaurant = response;
+    });
+  }
+  getAllProducts() {
     this.ts.getAllTableRestaurants().subscribe(res => this.listtable = res)
   }
 
@@ -46,11 +55,24 @@ export class TableRestaurantComponent implements OnInit {
         console.error(error); // log any errors
       });
   }
-  
-  editProduct(product : TableRestaurant){
+
+  editProduct(product: TableRestaurant) {
     this.ts.updateTableRestaurant(product).subscribe();
   }
-  deleteProduct(idProduct : any){
+  deleteProduct(idProduct: any) {
     this.ts.deleteTableRestaurant(idProduct).subscribe(() => this.getAllProducts())
+  }
+
+  addTableReservation2() {
+    this.http.post('http://localhost:8089/api/table', this.Table).subscribe(
+      response => {
+        console.log(response);
+        // Add any success message or redirect logic here
+      },
+      error => {
+        console.log(error);
+        // Add any error message or handling logic here
+      }
+    );
   }
 }

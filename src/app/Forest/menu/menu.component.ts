@@ -4,6 +4,8 @@ import { Menu } from '../model/Menu';
 import { NgClass } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Restaurant } from '../model/Restaurant';
+import { RestaurantService } from '../restaurant/restaurant.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,10 +16,13 @@ export class MenuComponent implements OnInit {
   selectedFile: File;
   listmenu: Menu[] = [];
   selectedMenu: Menu ;
+  listrestaurant: Restaurant[] = [];
 
-  constructor(private ms: MenuserviceService, private route: ActivatedRoute) { }
+  
+  constructor(private rs: RestaurantService,private ms: MenuserviceService, private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.getAllMenu();
+    this.getAllRestaurant();
     this.selectedMenu = {
       Description: null,
       idMenu: null,
@@ -28,22 +33,36 @@ export class MenuComponent implements OnInit {
         image: null,
     }
     console.log(this.selectedMenu);
-    console.log(this.selectedFile);
+    
+  }
+  getAllRestaurant() {
+    this.rs.getAllRestaurants().subscribe((response) => {
+      this.listrestaurant = response;
+    });
+  }
+
+  onSubmit(): void {
+    const idrestaurant = 1; // replace with actual restaurant ID
+    this.ms.add(this.selectedMenu)
+      .subscribe(response => {
+        console.log(response);
+      });
+    this.getAllMenu();
   }
 
   getAllMenu() {
-    this.ms.getAllMenus().subscribe((response) => {
+    this.ms.getAll().subscribe((response) => {
       this.listmenu = response;
     });
   }
 
   deletemenu(id: any) {
-    this.ms.deleteMenu(id).subscribe((response) => {
+    this.ms.delete(id).subscribe((response) => {
       this.getAllMenu();
     });
   }
   editmenu(menu: Menu) {
-    this.ms.updateMenu(menu).subscribe((response) => {
+    this.ms.update(menu).subscribe((response) => {
       this.listmenu = response;
     });
   }

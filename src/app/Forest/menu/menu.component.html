@@ -8,6 +8,15 @@
                 <form #orderForm="ngForm">
                     <div class="row">
                         <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">ID Menu </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="idMenu" required=""
+                                [(ngModel)]="selectedMenu.idMenu">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
                             <label for="validationCustom012" class="mb-0">Name Menu </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
@@ -30,7 +39,7 @@
                             <label for="validationCustom012" class="mb-0">Time of meal </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
-                            <input class="form-control" type="time" id="validationCustom012" name="price" required=""
+                            <input class="form-control" type="date" id="validationCustom012" name="price" required=""
                                 [(ngModel)]="selectedMenu.timeMeal">
                         </div>
                     </div>
@@ -55,18 +64,21 @@
                     </div>
                     <div class="row">
                         <div class="col-xl-3 col-sm-4">
-                            <label for="validationCustom012" class="mb-0">Restaurantid </label>
+                            <label for="validationCustom012" class="mb-0">Restaurant ID </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
-                            <input class="form-control" type="number" id="validationCustom012" name="price" required=""
+                            <select class="form-select" id="validationCustom012" name="restaurant"
                                 [(ngModel)]="selectedMenu.Restaurantid">
+                                <option *ngFor="let restaurant of listrestaurant" [value]="restaurant.idRestaurant">{{
+                                    restaurant.idRestaurant }}</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="update m-auto mr-auto">
                             <button type="submit" class="btn btn-primary btn-round">Update </button>
-                            <button type="submit" class="btn btn-success btn-round">Add</button>
+                            <button type="submit" class="btn btn-success btn-round" (click)="onSubmit()" >Add</button>
                         </div>
                     </div>
                 </form>
@@ -90,7 +102,7 @@
                     <p class="description text-center">The Type Food <br>{{p.typeFood}}</p>
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-round"
-                        (click)="deletemenu(p.idRestaurant)">delete</button>
+                        (click)="deletemenu(p.idMenu)">delete</button>
                         <button type="submit" class="btn btn-success btn-round">Select</button>
                         <button type="button" class="btn btn-info" (click)="open(myqrmodal)"> QR Code </button>
                         <ng-template #myqrmodal let-modal>

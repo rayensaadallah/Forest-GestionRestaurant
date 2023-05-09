@@ -57,10 +57,11 @@ public class MenuController {
         CodeQR.generateQRCodeMenu(menu);
         return r;
     }
-    
+
   @PostMapping("/add")
-  public Menu addRestaurant(@RequestBody Menu restaurant) throws IOException {
+  public Menu addRestaurant(@RequestBody Menu restaurant) throws IOException, WriterException {
     Menu r = iserviceMenu.addMenu2(restaurant);
+    CodeQR.generateQRCodeMenu(r);
     return r;
   }
 

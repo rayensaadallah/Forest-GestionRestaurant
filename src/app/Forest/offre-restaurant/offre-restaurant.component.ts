@@ -3,6 +3,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { OffreRestaurant } from '../model/OffreRestaurant';
 import { OffreRestaurantService } from './offre-restaurant.service';
 import { Restaurant } from '../model/Restaurant';
+import { RestaurantService } from '../restaurant/restaurant.service';
 
 @Component({
   selector: 'app-offre-restaurant',
@@ -14,14 +15,13 @@ export class OffreRestaurantComponent implements OnInit {
   listoffers: any;
   offreRestaurant!: OffreRestaurant;
   res!: Restaurant;
-  form: boolean = false;
-  closeResult!: string;
+  listrestaurant: Restaurant[] = [];
 
-  constructor(private offreservice: OffreRestaurantService, private modalService: NgbModal) { }
+  constructor(private rs: RestaurantService,private offreservice: OffreRestaurantService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getAllProducts();
-
+    this.getAllRestaurant();
     this.offreRestaurant = {
       idOffreRestaurant: null,
       nameOffre: "",
@@ -33,6 +33,11 @@ export class OffreRestaurantComponent implements OnInit {
       restaurant: null,
       accessRestaurants: null
     }
+  }
+  getAllRestaurant() {
+    this.rs.getAllRestaurants().subscribe((response) => {
+      this.listrestaurant = response;
+    });
   }
 
   deleteoffre(id: any) {

@@ -40,10 +40,14 @@
                             <label for="validationCustom012" class="mb-0">Restaurant ID </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
-                            <input class="form-control" type="number" id="validationCustom012" name="restaurant"
-                                required="" [(ngModel)]="offreRestaurant.restaurant">
+                            <select class="form-select" id="validationCustom012" name="restaurant"
+                                [(ngModel)]="offreRestaurant.restaurant">
+                                <option *ngFor="let restaurant of listrestaurant" [value]="restaurant.idRestaurant">{{
+                                    restaurant.idRestaurant }}</option>
+                            </select>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-xl-3 col-sm-4">
                             <label for="validationCustom012" class="mb-0">price</label>
@@ -246,7 +250,8 @@
                                                     </form>
                                                 </div>
                                             </ng-template>
-                                            <button type="button" class="btn btn-outline-danger" (click)="deleteoffre(p.idOffreRestaurant)" >delete</button>
+                                            <button type="button" class="btn btn-outline-danger"
+                                                (click)="deleteoffre(p.idOffreRestaurant)">delete</button>
                                         </td>
                                     </tr>
                                 </tbody>

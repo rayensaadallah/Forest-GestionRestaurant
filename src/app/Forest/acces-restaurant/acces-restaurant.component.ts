@@ -12,6 +12,7 @@ export class AccesRestaurantComponent implements OnInit {
 
   listaccess: any;
   access!: AccessRestaurant
+  
   constructor(private as: AccesRestaurantService) { }
 
   ngOnInit(): void {
