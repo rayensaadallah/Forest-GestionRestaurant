@@ -18,9 +18,11 @@ export class MenuComponent implements OnInit {
   selectedMenu: Menu ;
   listrestaurant: Restaurant[] = [];
 
+  isDisabled: boolean =true ;
   
   constructor(private rs: RestaurantService,private ms: MenuserviceService, private route: ActivatedRoute) { }
   ngOnInit(): void {
+    console.log(this.getAllMenu());
     this.getAllMenu();
     this.getAllRestaurant();
     this.selectedMenu = {
@@ -32,8 +34,6 @@ export class MenuComponent implements OnInit {
        typeFood: null,
         image: null,
     }
-    console.log(this.selectedMenu);
-    
   }
   getAllRestaurant() {
     this.rs.getAllRestaurants().subscribe((response) => {
@@ -42,6 +42,7 @@ export class MenuComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log(this.selectedMenu);
     const idrestaurant = 1; // replace with actual restaurant ID
     this.ms.add(this.selectedMenu)
       .subscribe(response => {
@@ -62,8 +63,19 @@ export class MenuComponent implements OnInit {
     });
   }
   editmenu(menu: Menu) {
+    
     this.ms.update(menu).subscribe((response) => {
       this.listmenu = response;
     });
+  }
+  getMenubyID(){
+    this.ms.getDetails(this.selectedMenu.idMenu).subscribe((response) => {
+      this.selectedMenu = response;
+    });
+    console.log(this.selectedMenu);
+  
+  }
+  onUpdateClick() {
+    this.isDisabled = false;
   }
 }

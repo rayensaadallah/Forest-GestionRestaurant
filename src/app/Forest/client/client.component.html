@@ -29,7 +29,7 @@
                                     <td>{{p.price}}</td>
                                     <td>{{p.restaurant}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-success btn-round"  (click)="add(p.idOffreRestaurant)">buy</button>
+                                        <button type="button" class="btn btn-success btn-round" (click)="onSubmitAccess(p.idOffreRestaurant)">buy</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -39,4 +39,117 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> Table State : </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th>Block </th>
+                                    <th>Max </th>
+                                    <th>Right Now </th>
+                                    <th>Numbers of the place</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let p of listtable'>
+                                        <td>{{p.block}}</td>
+                                        <td>{{p.max}}</td>
+                                        <td>{{p.now}}</td>
+                                        <td>{{p.number}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> Menu Disponible : </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th>id Menu </th>
+                                    <th>plateName </th>
+                                    <th>Description </th>
+                                    <th>typeFood</th>
+                                    <th>image </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let p of listmenu'>
+                                        <td>{{p.idMenu}}</td>
+                                        <td>{{p.plateName}}</td>
+                                        <td>{{p.Description}}</td>
+                                        <td>{{p.typeFood}}</td>
+                                        <td>
+                                            <div> image src ne9sa</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title">Make A Reservation </h5>
+            </div>
+            <div class="card-body">
+                <form #orderForm="ngForm">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-4">
+                                <label for="validationCustom012" class="mb-0">Select Table ID</label>
+                            </div>
+                            <div class="col-xl-8 col-sm-7">
+                                <select class="form-select" id="validationCustom012" name="restaurant"
+                                    [(ngModel)]="reservationtable.table">
+                                    <option *ngFor="let table of listtable" [value]="table.idTableRestaurant">{{
+                                        table.idTableRestaurant }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-4">
+                                <label for="validationCustom012" class="mb-0">Select Menu ID</label>
+                            </div>
+                            <div class="col-xl-8 col-sm-7">
+                                <select class="form-select" id="validationCustom012" name="restaurant"
+                                    [(ngModel)]="menu.idMenu">
+                                    <option *ngFor="let m of listmenu" [value]="m.idmenu">{{
+                                        m.idMenu }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="update m-auto mr-auto">
+                            <button type="submit" class="btn btn-success btn-round"
+                                (click)="addTableReservation()">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>

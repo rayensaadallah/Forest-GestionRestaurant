@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 @Service
 @Slf4j
@@ -55,6 +57,19 @@ public class ServiceRestaurant implements IServiceRestaurant {
                         restaurant.getTableRestaurants()))
                 .collect(Collectors.toList());
     }
+  @Autowired
+  private JavaMailSender mailSender;
+  @Override
+  public void sendEmail(String toEmail,String subject, String body){
+    SimpleMailMessage message = new SimpleMailMessage();
+    message.setFrom("ahmedmailer2@gmail.com");
+    message.setTo(toEmail);
+    message.setText(body);
+    message.setSubject(subject);
+
+    mailSender.send(message);
+    System.out.println("succ");
+  }
 
 
 

@@ -17,7 +17,7 @@ export class OffreRestaurantComponent implements OnInit {
   res!: Restaurant;
   listrestaurant: Restaurant[] = [];
 
-  constructor(private rs: RestaurantService,private offreservice: OffreRestaurantService, private modalService: NgbModal) { }
+  constructor(private rs: RestaurantService, private offreservice: OffreRestaurantService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getAllProducts();

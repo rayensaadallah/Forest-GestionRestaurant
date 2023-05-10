@@ -112,7 +112,6 @@
                                     <th>Is Dinner in </th>
                                     <th>Is BreackFast in </th>
                                     <th>Price </th>
-                                    <th>of this Restaurant </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor='let p of listoffers'>
@@ -123,7 +122,6 @@
                                         <td>{{p.dinner}}</td>
                                         <td>{{p.breckfast}}</td>
                                         <td>{{p.price}}</td>
-                                        <td>{{p.restaurant}}</td>
                                         <td>
                                             <button type="button" class="btn btn-outline-primary"
                                                 (click)="open(mymodal)">edit</button>

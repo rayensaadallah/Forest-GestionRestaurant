@@ -29,8 +29,10 @@ public class RestaurantController {
         return list;
     }
 
+
     @PostMapping("/add")
     public Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
+      //serviceRestaurant.sendEmail("rayen.saadallah@esprit.tn\n","Restaurant added ","Restaurant added succefully");
         Restaurant r = serviceRestaurant.addRestaurant(restaurant);
         return r;
     }

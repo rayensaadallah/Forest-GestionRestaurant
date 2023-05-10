@@ -17,7 +17,6 @@ export class AccesRestaurantComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllaccess();;
-
     this.access = {
       dateEnd: null,
       dateStart: null,
@@ -27,37 +26,17 @@ export class AccesRestaurantComponent implements OnInit {
       User: null
     }
   }
-    
-  
+  paymentchange(){
+    this.access.payment = true;
+    this.as.update(this.access,this.access.id).subscribe((response) => {
+      this.access = response; });
+  }
+
+
   getAllaccess() {
     this.as.getAll().subscribe((response) => {
       this.listaccess = response;
     });
-  }
-
-  add(restaurant: AccessRestaurant) {
-    if (this.access.id) {
-      this.as.update(this.access).subscribe(
-        (product) => {
-
-          console.log('Access updated successfully', product);
-        },
-        (error) => {
-          console.error('Failed to update access', error);
-        }
-      );
-    } else {
-      this.as.add(this.access).subscribe(
-        (product: AccessRestaurant) => {
-          console.log('restaurant added successfully', product);
-          this.getAllaccess();
-        },
-        (error) => {
-          console.error('Failed to add restaurant', error);
-        }
-      );
-    }
-
   }
 
   delete(id: any) {
@@ -65,11 +44,7 @@ export class AccesRestaurantComponent implements OnInit {
       this.getAllaccess();
     });
   }
-  edit(restaurant: AccessRestaurant) {
-    this.as.update(restaurant).subscribe((response) => {
-      this.access = response;
-    });
-  }
+  
 
 
   }

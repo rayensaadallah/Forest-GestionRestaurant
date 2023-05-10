@@ -11,14 +11,17 @@ export class AccesRestaurantService {
   readonly Restaurant_API_URL = 'http://localhost:8089/api/accessrestaurant/add';
   readonly GET_ALL_Restaurants_API_URL = 'http://localhost:8089/api/accessrestaurant/all';
   readonly DELETE_Restaurant_API_URL = 'http://localhost:8089/api/accessrestaurant/delete/';
-  readonly UPDATE_Restaurant_API_URL = 'http://localhost:8089/api/accessrestaurant/edit';
+  readonly UPDATE_Restaurant_API_URL = 'http://localhost:8089/api/accessrestaurant/edit/';
 
   readonly GET_Restaurant_DETAILS__API_URL = 'http://localhost:8089/api/Restaurant/retriveRestaurant/';
-
+  private baseUrl = 'http://localhost:8089/api/accessrestaurant';
   constructor(private httpClient: HttpClient) { }
-  add(accessrestaurant: AccessRestaurant): Observable<any> {
-    return this.httpClient.post<AccessRestaurant>(this.Restaurant_API_URL, accessrestaurant);
+  
+  addAccessRestaurant(accessRestaurant: AccessRestaurant, iduser: number, idoffre: number): Observable<AccessRestaurant> {
+    const url = `${this.baseUrl}/add/${iduser}/${idoffre}`;
+    return this.httpClient.post<AccessRestaurant>(url, accessRestaurant);
   }
+
   getAll() {
     return this.httpClient.get<AccessRestaurant[]>(this.GET_ALL_Restaurants_API_URL);
   }
@@ -28,8 +31,8 @@ export class AccesRestaurantService {
   getDetails(Id): Observable<any> {
     return this.httpClient.get<any>(this.GET_Restaurant_DETAILS__API_URL + Id);
   }
-  update(accessrestaurant: AccessRestaurant): Observable<any> {
-    return this.httpClient.put<any>(this.UPDATE_Restaurant_API_URL, accessrestaurant);
+  update(accessrestaurant: AccessRestaurant,ID:any): Observable<any> {
+    return this.httpClient.put<any>(this.UPDATE_Restaurant_API_URL + ID, accessrestaurant);
   }
 
 }
