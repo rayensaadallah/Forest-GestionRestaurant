@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
+
 @Service
 @Slf4j
 public class ServiceReservationPlace implements IServiceReservationPlace {
@@ -39,21 +41,22 @@ public class ServiceReservationPlace implements IServiceReservationPlace {
     }
 
 
-    @Override
-    public ReservationPlace addReservationPlace(Integer idmenu, Integer iduser, Integer idtable, ReservationPlace u) {
-        Menu menu=menuRepository.findById(idmenu).get();
-        u.setMenu(menu);
-        TableRestaurant tableRestaurant=tableRepository.findById(idmenu).get();
-        u.setTable(tableRestaurant);
-        u.setIduser(iduser);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(u.getDateStart());
-        calendar.add(Calendar.MINUTE, 30);
-        u.setDateEnd(calendar.getTime());
-        return reservationPlaceRepository.save(u);
-    }
+  @Override
+  public ReservationPlace addReservationPlace(Integer idmenu, Integer iduser, Integer idtable, ReservationPlace u) {
+    Menu menu = menuRepository.findById(idmenu).orElseThrow(() -> new NoSuchElementException("Menu not found for ID: " + idmenu));
+    u.setMenu(menu);
+    TableRestaurant tableRestaurant = tableRepository.findById(idtable).orElseThrow(() -> new NoSuchElementException("Table not found for ID: " + idtable));
+    u.setTable(tableRestaurant);
+    u.setIduser(iduser);
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(u.getDateStart());
+    calendar.add(Calendar.MINUTE, 30);
+    u.setDateEnd(calendar.getTime());
+    return reservationPlaceRepository.save(u);
+  }
 
-    @Override
+
+  @Override
     public ReservationPlace updateReservationPlace(ReservationPlace u) {
         return reservationPlaceRepository.save(u);
     }

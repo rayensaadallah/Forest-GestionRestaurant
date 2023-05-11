@@ -21,9 +21,10 @@ import { TableRestaurantComponent } from 'app/Forest/table-restaurant/table-rest
 import { RestaurantService } from 'app/Forest/restaurant/restaurant.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientComponent } from 'app/Forest/client/client.component';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 @NgModule({
   imports: [
+    BsDatepickerModule.forRoot(),
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,

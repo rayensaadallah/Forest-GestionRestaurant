@@ -29,7 +29,8 @@
                                     <td>{{p.price}}</td>
                                     <td>{{p.restaurant}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-success btn-round" (click)="onSubmitAccess(p.idOffreRestaurant)">buy</button>
+                                        <button type="button" class="btn btn-success btn-round"
+                                            (click)="onSubmitAccess(p.idOffreRestaurant)">buy</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -149,11 +150,22 @@
                                     required="" [(ngModel)]="reservationtable.confirmed">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="update m-auto mr-auto">
-                            <button type="submit" class="btn btn-success btn-round"
-                                (click)="addTableReservation()">Add</button>
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-4">
+                                <label for="start-date">Start Date:</label>
+                            </div>
+                            <div class="col-xl-8 col-sm-7">
+                                <input type="datetime-local" id="start-date" class="form-control"
+                                    [(ngModel)]="reservationtable.dateStart" name="dateStart">
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="update m-auto mr-auto">
+                                <button type="submit" class="btn btn-success btn-round"
+                                    (click)="addTableReservation()">Add</button>
+                            </div>
                         </div>
                     </div>
                 </form>

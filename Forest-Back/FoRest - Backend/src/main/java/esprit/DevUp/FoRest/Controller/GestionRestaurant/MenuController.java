@@ -44,7 +44,8 @@ public class MenuController {
     @PostMapping(value = "/add/{restaurant_id}" ,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Menu addMenu(@RequestParam("image") MultipartFile image, @RequestParam("description") String description,
                         @PathVariable("restaurant_id") Integer idrestaurant, @RequestParam("plate_name") String plate_name,
-                        @RequestParam("time_meal") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date timeMeal, @RequestParam("typeFood") typeFood typeFood
+                        @RequestParam("time_meal") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date timeMeal,
+                        @RequestParam("typeFood") typeFood typeFood
                          ) throws IOException, WriterException {
         Menu menu=new Menu();
         menu.setRestaurantid(idrestaurant);

@@ -5,5 +5,5 @@ export class Menu {
   timeMeal: Date;
   typeFood: string;
   Restaurantid: number;
-  image?: Blob;
+  image: Uint8Array;
 }

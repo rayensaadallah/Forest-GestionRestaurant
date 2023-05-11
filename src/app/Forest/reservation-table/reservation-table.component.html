@@ -18,17 +18,16 @@
                     </thead>
                     <tbody>
                         <tr *ngFor='let p of listreservation'>
-                            <td>{{p.idReservation}}</td>
+                            <td>{{p.idReservationPlace}}</td>
                             <td>1</td>
-                            <td>{{p.Menu}}</td>
-                            <td>{{p.table}}</td>
+                            <td>{{p.menu.idMenu}}</td>
+                            <td>{{p.table.idTableRestaurant}}</td>
                             <td>{{p.dateStart}}</td>
                             <td>{{p.dateEnd}}</td>
 
-                            <td><button type="button" class="btn btn-outline-primary"
-                                    (click)="open(mymodal)">edit</button>
+                            <td>
                                 <button type="button" class="btn btn-outline-danger"
-                                    (click)="deleteProduct(p.id_product)">delete</button>
+                                    (click)="deleteProduct(p.idReservationPlace)">delete</button>
                             </td>
                         </tr>
                     </tbody>

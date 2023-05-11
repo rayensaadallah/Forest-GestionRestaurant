@@ -39,8 +39,7 @@
                             <label for="validationCustom012" class="mb-0">Time of meal </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
-                            <input class="form-control" type="date" id="validationCustom012" name="timeMeal" required=""
-                                [(ngModel)]="selectedMenu.timeMeal">
+                            <input class="form-control" bsDatepicker [(bsValue)]="selectedMenu.timeMeal" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DDTHH:mm:ss', showWeekNumbers: false }">
                         </div>
                     </div>
                     <div class="row">
@@ -60,9 +59,8 @@
                         <div class="col-xl-3 col-sm-4">
                             <label for="validationCustom012" class="mb-0">Image </label>
                         </div>
-
                         <div class="col-xl-8 col-sm-7">
-                            <input class="form-control" type="file" id="validationCustom012" name="price" required="">
+                            <input type="file" (change)="onFileChange($event)" name="image" />
                         </div>
                     </div>
                     <div class="row">
@@ -81,7 +79,7 @@
                     <div class="row">
                         <div class="update m-auto mr-auto">
                             <button type="submit" class="btn btn-primary btn-round">Update </button>
-                            <button type="submit" class="btn btn-success btn-round" (click)="onSubmit()">Add</button>
+                            <button type="submit" class="btn btn-success btn-round" (click)="addMenu()">Add</button>
                         </div>
                     </div>
                 </form>
