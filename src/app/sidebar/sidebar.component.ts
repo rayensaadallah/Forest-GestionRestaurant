@@ -18,6 +18,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/ReservationTable', title: 'Reservation Tables', icon: 'nc-bell-55', class: '' },
     { path: '/Client', title: 'Client Can Do ', icon: 'nc-bell-55', class: '' },
     
+    
 ];
 
 @Component({

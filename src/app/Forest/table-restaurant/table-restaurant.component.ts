@@ -14,9 +14,9 @@ export class TableRestaurantComponent implements OnInit {
 
   listtable: any;
   Table!: TableRestaurant;
-  restaurantId: number;
-  http: any;
+  
   listrestaurant: Restaurant[] = [];
+  selectedRestaurant!:Restaurant;
   constructor(private ts: TableService, private rs: RestaurantService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -32,6 +32,14 @@ export class TableRestaurantComponent implements OnInit {
       reservationPlaces: null,
       resto: null
     }
+    this.selectedRestaurant = {
+      addressRestaurant : null,
+      idRestaurant: null,
+      nameRestaurant: null,
+      nbrmaximal: null,
+      offreRestaurants: null,
+      tableRestaurants: null,
+    }
   }
 
   getAllRestaurant() {
@@ -43,36 +51,21 @@ export class TableRestaurantComponent implements OnInit {
     this.ts.getAllTableRestaurants().subscribe(res => this.listtable = res)
   }
 
-  addTableReservation() {
-    console.log('Restaurant ID:', this.restaurantId); // add this line
-    this.ts.addTableRestaurant(this.restaurantId, this.Table)
-      .subscribe(res => {
-        console.log(res); // log the response from the API
-        // reset the form and table reservation object
-        this.Table = new TableRestaurant();
-        this.restaurantId = null;
-      }, error => {
-        console.error(error); // log any errors
-      });
-  }
-
   editProduct(product: TableRestaurant) {
     this.ts.updateTableRestaurant(product).subscribe();
   }
-  deleteProduct(idProduct: any) {
-    this.ts.deleteTableRestaurant(idProduct).subscribe(() => this.getAllProducts())
+  deleteProduct(id:any) {
+    this.ts.deleteTableRestaurant(id).subscribe(() => this.getAllProducts())
   }
 
-  addTableReservation2() {
-    this.http.post('http://localhost:8089/api/table', this.Table).subscribe(
-      response => {
+  addTableReservation(){
+    const id =this.selectedRestaurant.idRestaurant ;
+    console.log(this.Table);
+    this.Table.resto = this.selectedRestaurant
+    this.ts.addTableRestaurant(id,this.Table)
+      .subscribe(response => {
         console.log(response);
-        // Add any success message or redirect logic here
-      },
-      error => {
-        console.log(error);
-        // Add any error message or handling logic here
-      }
-    );
+      });
+    this.getAllProducts();
   }
 }

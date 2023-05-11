@@ -9,6 +9,15 @@
                 <form #orderForm="ngForm">
                     <div class="row">
                         <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">ID Table</label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="price" required=""
+                                [(ngModel)]="Table.idTableRestaurant">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
                             <label for="validationCustom012" class="mb-0">Block</label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
@@ -25,7 +34,15 @@
                                 [(ngModel)]="Table.max">
                         </div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="col-xl-3 col-sm-4">
+                            <label for="validationCustom012" class="mb-0">Number </label>
+                        </div>
+                        <div class="col-xl-8 col-sm-7">
+                            <input class="form-control" type="number" id="validationCustom012" name="number" required=""
+                                [(ngModel)]="Table.number">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-xl-3 col-sm-4">
                             <label for="validationCustom012" class="mb-0">now</label>
@@ -41,9 +58,9 @@
                         </div>
                         <div class="col-xl-8 col-sm-7">
                             <select class="form-select" id="validationCustom012" name="restaurant"
-                                [(ngModel)]="Table.resto">
-                                <option *ngFor="let restaurant of listrestaurant" [value]="restaurant.idRestaurant">{{
-                                    restaurant.idRestaurant }}</option>
+                                [(ngModel)]="selectedRestaurant.idRestaurant">
+                                <option *ngFor="let restaurant of listrestaurant" [value]="restaurant.idRestaurant">
+                                    {{restaurant.idRestaurant }}</option>
                             </select>
                         </div>
                     </div>
@@ -70,6 +87,7 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
+                                    <th>ID </th>
                                     <th>Block </th>
                                     <th>Max </th>
                                     <th>Right Now </th>
@@ -77,63 +95,14 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor='let p of listtable'>
+                                        <td>{{p.idTableRestaurant}}</td>
                                         <td>{{p.block}}</td>
                                         <td>{{p.max}}</td>
                                         <td>{{p.now}}</td>
                                         <td>{{p.number}}</td>
+                                        <button type="button" class="btn btn-outline-danger"
+                                            (click)="deleteProduct(p.idTableRestaurant)">delete</button>
 
-                                        <td><button type="button" class="btn btn-outline-primary"
-                                                (click)="open(mymodal)">edit</button>
-                                            <ng-template #mymodal let-modal>
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="modal-basic-title">Edit</h4>
-                                                    <button type="button" class="close" aria-label="Close"
-                                                        (click)="modal.dismiss('Cross click')">
-                                                        <span aria-hidden="true" (click)="cancel()">×</span>
-
-                                                    </button>
-
-                                                </div>
-                                                <div>
-                                                    <form>
-                                                        <div class="modal-body">
-
-                                                            <div class="row" class="col-md-5">
-                                                                <label>Block </label>
-                                                                <input type="text" [(ngModel)]="p.block"
-                                                                    [ngModelOptions]="{standalone : true}" />
-                                                            </div>
-                                                            <div class="row" class="col-md-5">
-                                                                <label>Max </label>
-                                                                <input type="number" [(ngModel)]="p.max"
-                                                                    [ngModelOptions]="{standalone : true}" />
-                                                            </div>
-                                                            <div class="row" class="col-md-5">
-                                                                <label>Now </label>
-                                                                <input type="number" [(ngModel)]="p.now"
-                                                                    [ngModelOptions]="{standalone : true}" />
-                                                            </div>
-                                                            <div class="row" class="col-md-5">
-                                                                <label>Number </label>
-                                                                <input type="number" [(ngModel)]="p.number"
-                                                                    [ngModelOptions]="{standalone : true}" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="modal-footer">
-
-                                                            <button type="button" class="btn btn-info"
-                                                                (click)="modal.close('Save click')"
-                                                                (click)="cancel()">Cancel</button>
-                                                            <button class="btn btn-success" (click)="editProduct(p)"
-                                                                (click)="modal.close('Save click')">Validate</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </ng-template>
-                                            <button type="button" class="btn btn-outline-danger"
-                                                (click)="deleteProduct(p.id_product)">delete</button>
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

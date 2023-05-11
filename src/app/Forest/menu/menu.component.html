@@ -12,7 +12,7 @@
                         </div>
                         <div class="col-xl-8 col-sm-7">
                             <input class="form-control" type="number" id="validationCustom012" name="idMenu" required=""
-                                [(ngModel)]="selectedMenu.idMenu"  [disabled]="isDisabled">
+                                [(ngModel)]="selectedMenu.idMenu" [disabled]="isDisabled">
                         </div>
                     </div>
                     <div class="row">
@@ -29,8 +29,8 @@
                             <label for="validationCustom012" class="mb-0">Description </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
-                            <input class="form-control" type="text" id="validationCustom012" name="Description" required=""
-                                [(ngModel)]="selectedMenu.Description">
+                            <input class="form-control" type="text" id="validationCustom012" name="Description"
+                                required="" [(ngModel)]="selectedMenu.Description">
                         </div>
                     </div>
 
@@ -48,21 +48,21 @@
                             <label for="validationCustom012" class="mb-0">Type Food </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
-                            <select class="form-select" id="validationCustom012" name="typeFood" [(ngModel)]="selectedMenu.typeFood">
+                            <select class="form-select" id="validationCustom012" name="typeFood"
+                                [(ngModel)]="selectedMenu.typeFood">
                                 <option value="BREAKFAST">BREAKFAST</option>
                                 <option value="LUNCH">LUNCH</option>
                                 <option value="DINNER">DINNER</option>
                             </select>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="row">
                         <div class="col-xl-3 col-sm-4">
                             <label for="validationCustom012" class="mb-0">Image </label>
                         </div>
 
                         <div class="col-xl-8 col-sm-7">
-                            <input class="form-control" type="file" id="validationCustom012" name="price" required=""
-                                [(ngModel)]="selectedMenu.image">
+                            <input class="form-control" type="file" id="validationCustom012" name="price" required="">
                         </div>
                     </div>
                     <div class="row">
@@ -72,7 +72,8 @@
                         <div class="col-xl-8 col-sm-7">
                             <select class="form-select" id="validationCustom012" name="restaurant"
                                 [(ngModel)]="selectedMenu.Restaurantid">
-                                <option *ngFor="let restaurant of listrestaurant" [value]="restaurant.idRestaurant">{{restaurant.idRestaurant }}</option>
+                                <option *ngFor="let restaurant of listrestaurant" [value]="restaurant.idRestaurant">
+                                    {{restaurant.idRestaurant }}</option>
                             </select>
                         </div>
                     </div>
@@ -80,7 +81,7 @@
                     <div class="row">
                         <div class="update m-auto mr-auto">
                             <button type="submit" class="btn btn-primary btn-round">Update </button>
-                            <button type="submit" class="btn btn-success btn-round" (click)="onSubmit()" >Add</button>
+                            <button type="submit" class="btn btn-success btn-round" (click)="onSubmit()">Add</button>
                         </div>
                     </div>
                 </form>
@@ -88,25 +89,25 @@
         </div>
     </div>
     <div class="col-sm-4" class="card card-user">
-        <div >
+        <div>
             <tr *ngFor='let p of listmenu'>
                 <div class="image">
-                    <img src="assets/img/damir-bosnjak.jpg" alt="...">
+                    <img src="assets/menus/platvd.jpg" alt="...">
                 </div>
                 <div class="card-body">
                     <div class="author">
                         <a href="#">
-                            <h1>JCP</h1>
+                            <h1>{{p.idMenu}}</h1>
                             <h5 class="title">{{p.plateName}}</h5>
                         </a>
                         <p class="description">{{p.Description}}</p>
                     </div>
                     <p class="description text-center"> Type De Food <br>{{p.typeFood}}</p>
-                    
+
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-round"
-                        (click)="deleterestaurant(p.idRestaurant)">delete</button>
-                        <button type="submit" class="btn btn-success btn-round" (click)="onUpdateClick()" >Select</button>
+                            (click)="deletemenu(p.idMenu)">delete</button>
+                        <button type="submit" class="btn btn-success btn-round" (click)="onUpdateClick">Select</button>
                     </div>
                 </div>
             </tr>

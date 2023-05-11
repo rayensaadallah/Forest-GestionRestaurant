@@ -8,15 +8,15 @@ import { ReservationService } from './reservation.service';
   styleUrls: ['./reservation-table.component.scss']
 })
 export class ReservationTableComponent implements OnInit {
-
-  listreservation: any;
+  
+  listreservation: ReservationPlace[] = [];
   reservation!: ReservationPlace
   constructor(private rs: ReservationService) { }
 
   ngOnInit(): void {
-    this.getAllProducts();;
+    this.getAllRestaurant();;
 
-    this.reservation = {
+    this.reservation = {confirmed: false,
       dateEnd: null,
       dateStart: null,
       idReservationPlace: null,
@@ -25,8 +25,10 @@ export class ReservationTableComponent implements OnInit {
       table :null
     }
   }
-  getAllProducts(){
-    this.rs.getAllProducts().subscribe(res => this.listreservation = res)
+  getAllRestaurant() {
+    this.rs.getAll().subscribe((response) => {
+      this.listreservation = response;
+    });
   }
 
 }

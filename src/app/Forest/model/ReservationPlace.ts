@@ -8,6 +8,5 @@ export class ReservationPlace {
   iduser: number;
   table: TableRestaurant;
   menu: Menu;
-
-  
+  confirmed: Boolean;
 }

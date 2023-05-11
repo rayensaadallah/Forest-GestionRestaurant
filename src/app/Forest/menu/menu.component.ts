@@ -57,8 +57,9 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  deletemenu(id: any) {
-    this.ms.delete(id).subscribe((response) => {
+  deletemenu(id : any) {
+    this.selectedMenu.idMenu = id;
+    this.ms.delete(this.selectedMenu.idMenu).subscribe((response) => {
       this.getAllMenu();
     });
   }

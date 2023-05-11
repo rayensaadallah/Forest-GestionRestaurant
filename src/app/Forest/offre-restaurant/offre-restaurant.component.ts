@@ -14,7 +14,7 @@ export class OffreRestaurantComponent implements OnInit {
 
   listoffers: any;
   offreRestaurant!: OffreRestaurant;
-  res!: Restaurant;
+  selectedRestaurant!: Restaurant;
   listrestaurant: Restaurant[] = [];
 
   constructor(private rs: RestaurantService, private offreservice: OffreRestaurantService, private modalService: NgbModal) { }
@@ -32,6 +32,14 @@ export class OffreRestaurantComponent implements OnInit {
       price: null,
       restaurant: null,
       accessRestaurants: null
+    }
+    this.selectedRestaurant = {
+      addressRestaurant: null ,
+      idRestaurant : null,
+      nameRestaurant:null,
+      nbrmaximal:null,
+      offreRestaurants:null,
+      tableRestaurants:null,
     }
   }
   getAllRestaurant() {
@@ -51,13 +59,14 @@ export class OffreRestaurantComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const idrestaurant = 1; // replace with actual restaurant ID
-    this.offreservice.addOffreRestaurant(idrestaurant, this.offreRestaurant)
+    this.offreRestaurant.restaurant = this.selectedRestaurant;
+    this.offreservice.addOffreRestaurant(this.selectedRestaurant.idRestaurant, this.offreRestaurant)
       .subscribe(response => {
         console.log(response);
       });
     this.getAllProducts();
   }
+  
 
   editProduct(product: OffreRestaurant) {
     this.offreservice.editProduct(product).subscribe();

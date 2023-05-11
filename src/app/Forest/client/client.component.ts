@@ -8,6 +8,7 @@ import { TableService } from '../table-restaurant/table.service';
 import { Menu } from '../model/Menu';
 import { MenuserviceService } from '../menu/menuservice.service';
 import { ReservationPlace } from '../model/ReservationPlace';
+import { ReservationService } from '../reservation-table/reservation.service';
 
 @Component({
   selector: 'app-client',
@@ -18,6 +19,7 @@ export class ClientComponent implements OnInit {
   listoffers: any;
   offreRestaurant!: OffreRestaurant;
 
+  
   listaccess: any;
   access!: AccessRestaurant
 
@@ -27,9 +29,9 @@ export class ClientComponent implements OnInit {
   listtable: any;
   Table!: TableRestaurant;
 
-
+  
   reservationtable!: ReservationPlace;
-  constructor(private ms: MenuserviceService, private ts: TableService, private offreservice: OffreRestaurantService, private as: AccesRestaurantService) { }
+  constructor(private rs: ReservationService,private ms: MenuserviceService, private ts: TableService, private offreservice: OffreRestaurantService, private as: AccesRestaurantService) { }
 
   ngOnInit(): void {
     this.getAllMenu();
@@ -46,6 +48,7 @@ export class ClientComponent implements OnInit {
       image:null,
     }
     this.reservationtable={
+      confirmed: false,
       dateEnd: null,
       dateStart:null,
       idReservationPlace:null,
@@ -56,10 +59,10 @@ export class ClientComponent implements OnInit {
     this.access = {
       dateEnd: null,
       dateStart: null,
-      id: null,
+      id_access_restaurant: null,
       offreRestaurant: null,
       payment: null,
-      User: null
+      user: null
     }
     this.offreRestaurant = {
       idOffreRestaurant: 0,
@@ -98,7 +101,8 @@ export class ClientComponent implements OnInit {
   }
   
   onSubmitAccess(idoffre:any): void {
-    const iduser = 2;
+    this.access.payment = false;
+    const iduser = 1;
     //const idoffre =this.offreRestaurant.idOffreRestaurant;
     this.as.addAccessRestaurant(this.access, iduser, idoffre)
       .subscribe(response => {
@@ -109,8 +113,17 @@ export class ClientComponent implements OnInit {
         // handle the error if needed
       });
   }
-  addTableReservation(){
 
+
+  addTableReservation(){
+    const iduser = 1;
+    this.rs.addReservationPlace(this.reservationtable,iduser,this.menu.idMenu, this.Table.idTableRestaurant)
+      .subscribe(response => {
+        console.log('Reservation added successfully', response);
+      }, error => {
+        console.error('Error adding Reservation', error);
+        // handle the error if needed
+      });
   }
 
 }

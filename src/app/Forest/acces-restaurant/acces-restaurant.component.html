@@ -1,4 +1,6 @@
 <div class="col-md-12">
+
+
     <div class="card">
         <div class="card-header">
             <h4 class="card-title"> History Of Access Of Restaurant </h4>
@@ -7,25 +9,27 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead class="text-primary">
-                        <th>Referance Access</th>
+                        <th>Reference Access</th>
                         <th>User</th>
                         <th>Offre Taken</th>
-                        <th>Date Start </th>
-                        <th>Date End </th>
-                        <th>Payment </th>
+                        <th>Date Start</th>
+                        <th>Date End</th>
+                        <th>Payment</th>
+                        <th>Actions</th>
                     </thead>
                     <tbody>
                         <tr *ngFor='let p of listaccess'>
-                            <td>{{p.id}}</td>
-                            <td>{{p.User}}</td>
-                            <td></td>
+                            <td>{{p.id_access_restaurant}}</td>
+                            <td>{{p.user.id_user}}</td>
+                            <td>1</td>
                             <td>{{p.dateStart}}</td>
                             <td>{{p.dateEnd}}</td>
                             <td>{{p.payment}}</td>
-
                             <td>
-                                <button type="button" class="btn btn-outline-primary"  (click)="paymentchange()">Payment Check</button>
-                                <button type="button" class="btn btn-outline-danger">delete</button>
+                                <button type="button" class="btn btn-outline-primary"
+                                    (click)="edit(p)">Payment Check</button>
+                                <button type="button" class="btn btn-outline-danger"
+                                    (click)="delete(p.id_access_restaurant)">Delete</button>
                             </td>
                         </tr>
                     </tbody>

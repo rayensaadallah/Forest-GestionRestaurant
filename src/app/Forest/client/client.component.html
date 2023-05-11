@@ -96,7 +96,7 @@
                                         <td>{{p.Description}}</td>
                                         <td>{{p.typeFood}}</td>
                                         <td>
-                                            <div> image src ne9sa</div>
+                                            <div> loading ...</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -118,26 +118,35 @@
                     <div class="row">
                         <div class="row">
                             <div class="col-xl-3 col-sm-4">
-                                <label for="validationCustom012" class="mb-0">Select Table ID</label>
+                                <label for="validationCustom012" class="mb-0">Table ID </label>
                             </div>
                             <div class="col-xl-8 col-sm-7">
-                                <select class="form-select" id="validationCustom012" name="restaurant"
-                                    [(ngModel)]="reservationtable.table">
-                                    <option *ngFor="let table of listtable" [value]="table.idTableRestaurant">{{
-                                        table.idTableRestaurant }}</option>
+                                <select class="form-select" id="validationCustom012" name="tables"
+                                    [(ngModel)]="Table.idTableRestaurant">
+                                    <option *ngFor="let restaurant of listtable" [value]="restaurant.idTableRestaurant">
+                                        {{restaurant.idTableRestaurant }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xl-3 col-sm-4">
-                                <label for="validationCustom012" class="mb-0">Select Menu ID</label>
+                                <label for="validationCustom012" class="mb-0">Menu ID </label>
                             </div>
                             <div class="col-xl-8 col-sm-7">
                                 <select class="form-select" id="validationCustom012" name="restaurant"
                                     [(ngModel)]="menu.idMenu">
-                                    <option *ngFor="let m of listmenu" [value]="m.idmenu">{{
-                                        m.idMenu }}</option>
+                                    <option *ngFor="let restaurant of listmenu" [value]="restaurant.idMenu">
+                                        {{restaurant.idMenu }}</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-4">
+                                <label for="validationCustom012" class="mb-0">Confirmed </label>
+                            </div>
+                            <div class="col-xl-8 col-sm-7">
+                                <input class="form-control" type="checkbox" id="validationCustom012" name="confimer"
+                                    required="" [(ngModel)]="reservationtable.confirmed">
                             </div>
                         </div>
                     </div>

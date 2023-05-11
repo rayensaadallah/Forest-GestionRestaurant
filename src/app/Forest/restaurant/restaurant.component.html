@@ -47,30 +47,29 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-4" class="card card-user">
-        <div >
+    <div class="col-sm-4">
+        <div class="card card-user">
+
             <tr *ngFor='let p of listrestaurant'>
                 <div class="image">
-                    <img src="assets/img/damir-bosnjak.jpg" alt="...">
+                    <img src="assets/img/bg5.jpg" alt="...">
                 </div>
                 <div class="card-body">
                     <div class="author">
                         <a href="#">
                             <h1>JCP</h1>
-                            <h5 class="title">  {{p.nameRestaurant}}</h5>
+                            <h5 class="title"> {{p.nameRestaurant}}</h5>
                         </a>
                         <p class="description">Adress Restaurant: {{p.addressRestaurant}}</p>
                     </div>
                     <p class="description text-center"> Nombre de place Disponible <br>{{p.nbrmaximal}}</p>
-                    
+
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-round"
-                        (click)="deleterestaurant(p.idRestaurant)">delete</button>
+                            (click)="deleterestaurant(p.idRestaurant)">delete</button>
                         <button type="submit" class="btn btn-success btn-round">Select</button>
                     </div>
                 </div>
             </tr>
         </div>
     </div>
-
-</div>

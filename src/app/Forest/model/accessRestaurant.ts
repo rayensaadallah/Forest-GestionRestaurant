@@ -1,10 +1,10 @@
 import { OffreRestaurant } from './OffreRestaurant';
 
 export class AccessRestaurant {
-  id: number;
+  id_access_restaurant: number;
   dateStart: Date;
   dateEnd: Date;
   payment: Boolean;
-  User: number;
+  user: number;
   offreRestaurant: OffreRestaurant;
 }

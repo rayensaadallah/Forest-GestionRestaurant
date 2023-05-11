@@ -36,8 +36,7 @@ public class TableController {
     }
 
         @PostMapping("/add/{idrestaurant}")
-        public TableRestaurant addTableRestaurant(@RequestBody TableRestaurant reservationPlace,
-        @PathVariable("idrestaurant")Integer idrestaurant) {
+        public TableRestaurant addTableRestaurant(@RequestBody TableRestaurant reservationPlace,@PathVariable("idrestaurant")Integer idrestaurant) {
             TableRestaurant r = iServiceTableRestaurant.addTableRestaurant(idrestaurant,reservationPlace);
             return r;
         }

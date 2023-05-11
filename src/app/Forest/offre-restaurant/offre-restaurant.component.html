@@ -35,15 +35,16 @@
                                 required="" [(ngModel)]="offreRestaurant.nbrDays">
                         </div>
                     </div>
+                    
                     <div class="row">
                         <div class="col-xl-3 col-sm-4">
                             <label for="validationCustom012" class="mb-0">Restaurant ID </label>
                         </div>
                         <div class="col-xl-8 col-sm-7">
                             <select class="form-select" id="validationCustom012" name="restaurant"
-                                [(ngModel)]="offreRestaurant.restaurant">
-                                <option *ngFor="let restaurant of listrestaurant" [value]="restaurant.idRestaurant">{{
-                                    restaurant.idRestaurant }}</option>
+                                [(ngModel)]="selectedRestaurant.idRestaurant">
+                                <option *ngFor="let restaurant of listrestaurant" [value]="restaurant.idRestaurant">
+                                    {{restaurant.idRestaurant }}</option>
                             </select>
                         </div>
                     </div>
@@ -112,6 +113,7 @@
                                     <th>Is Dinner in </th>
                                     <th>Is BreackFast in </th>
                                     <th>Price </th>
+                                    <th>Restaurant id </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor='let p of listoffers'>
@@ -120,134 +122,10 @@
                                         <td>{{p.nbrDays}}</td>
                                         <td>{{p.lunch}}</td>
                                         <td>{{p.dinner}}</td>
-                                        <td>{{p.breckfast}}</td>
+                                        <td>false</td>
                                         <td>{{p.price}}</td>
+                                        <td>1</td>
                                         <td>
-                                            <button type="button" class="btn btn-outline-primary"
-                                                (click)="open(mymodal)">edit</button>
-
-                                            <ng-template #mymodal let-modal>
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="modal-basic-title">Edit</h4>
-                                                    <button type="button" class="close" aria-label="Close"
-                                                        (click)="modal.dismiss('Cross click')">
-                                                        <span aria-hidden="true" (click)="cancel()">×</span>
-                                                    </button>
-                                                </div>
-                                                <div>
-                                                    <form #orderForm="ngForm">
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <div class="col-xl-3 col-sm-4">
-                                                                    <label for="validationCustom012"
-                                                                        class="mb-0">idOffreRestaurant</label>
-                                                                </div>
-                                                                <div class="col-xl-8 col-sm-7">
-                                                                    <input class="form-control" type="text"
-                                                                        id="validationCustom012"
-                                                                        name="idOffreRestaurant" required=""
-                                                                        [(ngModel)]="listoffers.idOffreRestaurant">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xl-3 col-sm-4">
-                                                                    <label for="validationCustom012"
-                                                                        class="mb-0">nameOffre </label>
-                                                                </div>
-                                                                <div class="col-xl-8 col-sm-7">
-                                                                    <input class="form-control" type="text"
-                                                                        id="validationCustom012" name="nameOffre"
-                                                                        required="" [(ngModel)]="listoffers.nameOffre">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-xl-3 col-sm-4">
-                                                                    <label for="validationCustom012"
-                                                                        class="mb-0">nbrDays</label>
-                                                                </div>
-                                                                <div class="col-xl-8 col-sm-7">
-                                                                    <input class="form-control" type="number"
-                                                                        id="validationCustom012" name="nbrDays"
-                                                                        required="" [(ngModel)]="listoffers.nbrDays">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xl-3 col-sm-4">
-                                                                    <label for="validationCustom012"
-                                                                        class="mb-0">Restaurant ID </label>
-                                                                </div>
-                                                                <div class="col-xl-8 col-sm-7">
-                                                                    <input class="form-control" type="number"
-                                                                        id="validationCustom012" name="restaurant"
-                                                                        required="" [(ngModel)]="listoffers.restaurant">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xl-3 col-sm-4">
-                                                                    <label for="validationCustom012"
-                                                                        class="mb-0">price</label>
-                                                                </div>
-                                                                <div class="col-xl-8 col-sm-7">
-                                                                    <input class="form-control" type="number"
-                                                                        id="validationCustom012" name="price"
-                                                                        required="" [(ngModel)]="listoffers.price">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xl-3 col-sm-4">
-                                                                    <label for="validationCustom012"
-                                                                        class="mb-0">BREAKFAST</label>
-                                                                </div>
-                                                                <div class="col-xl-8 col-sm-7">
-                                                                    <input class="form-control" type="checkbox"
-                                                                        id="validationCustom012" name="BREAKFAST"
-                                                                        required="" [(ngModel)]="listoffers.breakfast">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xl-3 col-sm-4">
-                                                                    <label for="validationCustom012"
-                                                                        class="mb-0">LUNCH</label>
-                                                                </div>
-                                                                <div class="col-xl-8 col-sm-7">
-                                                                    <input class="form-control" type="checkbox"
-                                                                        id="validationCustom012" name="LUNCH"
-                                                                        required="" [(ngModel)]="listoffers.lunch">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xl-3 col-sm-4">
-                                                                    <label for="validationCustom012"
-                                                                        class="mb-0">DINNER</label>
-                                                                </div>
-                                                                <div class="col-xl-8 col-sm-7">
-                                                                    <input class="form-control" type="checkbox"
-                                                                        id="validationCustom012" name="DINNER"
-                                                                        required="" [(ngModel)]="listoffers.dinner">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="update m-auto mr-auto">
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary btn-round">Update
-                                                                    </button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-success btn-round"
-                                                                        (click)="addProduct(offreRestaurant)">Add</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-info"
-                                                                (click)="modal.close('Save click')"
-                                                                (click)="cancel()">Cancel</button>
-                                                            <button class="btn btn-success" (click)="editProduct(p)"
-                                                                (click)="modal.close('Save click')">Validate</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </ng-template>
                                             <button type="button" class="btn btn-outline-danger"
                                                 (click)="deleteoffre(p.idOffreRestaurant)">delete</button>
                                         </td>

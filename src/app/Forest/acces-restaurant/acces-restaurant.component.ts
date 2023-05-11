@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AccessRestaurant } from '../model/accessRestaurant';
 import { AccesRestaurantService } from './acces-restaurant.service';
+import { User } from '../model/user';
+import { OffreRestaurant } from '../model/OffreRestaurant';
 
 @Component({
   selector: 'app-acces-restaurant',
@@ -10,28 +12,43 @@ import { AccesRestaurantService } from './acces-restaurant.service';
 export class AccesRestaurantComponent implements OnInit {
 
 
-  listaccess: any;
-  access!: AccessRestaurant
-  
+
+  listaccess: AccessRestaurant[] = [];
+  access!: AccessRestaurant;
+  user!: User;
+  offreRestaurant!: OffreRestaurant;
   constructor(private as: AccesRestaurantService) { }
 
   ngOnInit(): void {
-    this.getAllaccess();;
+    console.log(this.access);
+    this.getAllaccess();
     this.access = {
       dateEnd: null,
       dateStart: null,
-      id: null,
+      id_access_restaurant: null,
       offreRestaurant: null,
       payment: false,
-      User: null
+      user: null
+    }
+    this.user = {
+      accessRestaurants: null,
+      CIN: null,
+      DateNaissance: null,
+      Email: null, firstname: null, gender: null, id_user: null, Lastname: null, Password: null, phone_number: null,
+      typeUser: null,
+    }
+    this.offreRestaurant = {
+      idOffreRestaurant: null,
+      nameOffre: "",
+      nbrDays: 0,
+      breakfast: false,
+      lunch: false,
+      dinner: false,
+      price: null,
+      restaurant: null,
+      accessRestaurants: null
     }
   }
-  paymentchange(){
-    this.access.payment = true;
-    this.as.update(this.access,this.access.id).subscribe((response) => {
-      this.access = response; });
-  }
-
 
   getAllaccess() {
     this.as.getAll().subscribe((response) => {
@@ -44,7 +61,12 @@ export class AccesRestaurantComponent implements OnInit {
       this.getAllaccess();
     });
   }
-  
 
-
+  edit(p: AccessRestaurant) {
+    this.access.payment = true;
+    this.as.update(p, p.id_access_restaurant).subscribe((response) => {
+      this.listaccess = response;
+    });
   }
+
+}

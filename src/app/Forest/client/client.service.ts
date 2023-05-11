@@ -12,10 +12,4 @@ export class ClientService {
 
   constructor(private httpClient: HttpClient) { }
 
-
-/*  
-  add(access: AccessRestaurant): Observable<AccessRestaurant> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post<AccessRestaurant>(`${this.baseUrl}/add/${access.User}/${access.offreRestaurant.idOffreRestaurant}`, access, { headers: headers });
-  }*/
 }

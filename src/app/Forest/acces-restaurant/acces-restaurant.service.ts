@@ -11,7 +11,7 @@ export class AccesRestaurantService {
   readonly Restaurant_API_URL = 'http://localhost:8089/api/accessrestaurant/add';
   readonly GET_ALL_Restaurants_API_URL = 'http://localhost:8089/api/accessrestaurant/all';
   readonly DELETE_Restaurant_API_URL = 'http://localhost:8089/api/accessrestaurant/delete/';
-  readonly UPDATE_Restaurant_API_URL = 'http://localhost:8089/api/accessrestaurant/edit/';
+  readonly UPDATE_Restaurant_API_URL = 'http://localhost:8089/api/accessrestaurant/update/';
 
   readonly GET_Restaurant_DETAILS__API_URL = 'http://localhost:8089/api/Restaurant/retriveRestaurant/';
   private baseUrl = 'http://localhost:8089/api/accessrestaurant';
